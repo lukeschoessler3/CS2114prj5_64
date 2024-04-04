@@ -9,7 +9,6 @@ public class lukeschoessler3
     // ~Public Methods ........................................................
 
     public static void main(String[] args) {
-
         System.out.println("edit by kean");
         
     }
