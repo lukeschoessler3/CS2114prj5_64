@@ -10,7 +10,7 @@ public class lukeschoessler3
 
     public static void main(String[] args) {
 
-        System.out.println("Glad to be on your team");
-
+        System.out.println("edit by kean");
+        
     }
 }
