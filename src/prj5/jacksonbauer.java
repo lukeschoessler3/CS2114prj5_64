@@ -1,4 +1,5 @@
 package prj5;
+
 public class jacksonbauer
 {
 
@@ -6,10 +7,16 @@ public class jacksonbauer
     {
         // TODO Auto-generated constructor stub
     }
-    //~ Fields ................................................................
+    // ~ Fields ................................................................
 
-    //~ Constructors ..........................................................
+    // ~ Constructors ..........................................................
 
-    //~Public  Methods ........................................................
 
+    // ~Public Methods ........................................................
+    public static void main(String[] args)
+    {
+
+        System.out.println("Glad to be on your team");
+
+    }
 }
