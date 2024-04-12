@@ -2,10 +2,10 @@ package prj5;
 
 // -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here. Follow it with additional
- * details about its purpose, what abstraction it represents, and how to use it.
+ * Creates the Influencer class with influencer data and an array of months to
+ * hold separate data which is used to calculate engagement rates
  * 
- * @author lasch
+ * @author Luke Schoessler
  * @version Apr 11, 2024
  */
 public class Influencer
