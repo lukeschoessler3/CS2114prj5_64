@@ -238,4 +238,14 @@ public class Influencer
         return engagementRate;
     }
 
+
+    // ----------------------------------------------------------
+    /**
+     * Sorts the array of months based on the month
+     */
+    public void sortMonths()
+    {
+        
+    }
+
 }

@@ -128,7 +128,7 @@ public class Month
 
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * Compares months
      * 
      * @param otherMonth
      * @return returns -1 if less than otherMonth, 1 if greater, and 0 if they
@@ -136,6 +136,85 @@ public class Month
      */
     public int compareTo(Month otherMonth)
     {
+
+        if (this.getMonthIndex() == -1 || otherMonth.getMonthIndex() == -1)
+        {
+            return 100;
+        }
+
+        if (this.getMonthIndex() < (otherMonth.getMonthIndex()))
+        {
+            return -1;
+        }
+
+        if (this.getMonthIndex() > (otherMonth.getMonthIndex()))
+        {
+            return 1;
+        }
+
         return 0;
+
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Gets the index of the month
+     * 
+     * @return returns the index of the month and -1 if the month is invalid
+     */
+    public int getMonthIndex()
+    {
+        if (this.getMonthName().equals("January"))
+        {
+            return 0;
+        }
+        if (this.getMonthName().equals("February"))
+        {
+            return 1;
+        }
+        if (this.getMonthName().equals("March"))
+        {
+            return 2;
+        }
+        if (this.getMonthName().equals("April"))
+        {
+            return 3;
+        }
+        if (this.getMonthName().equals("May"))
+        {
+            return 4;
+        }
+        if (this.getMonthName().equals("June"))
+        {
+            return 5;
+        }
+        if (this.getMonthName().equals("July"))
+        {
+            return 6;
+        }
+        if (this.getMonthName().equals("August"))
+        {
+            return 7;
+        }
+        if (this.getMonthName().equals("September"))
+        {
+            return 8;
+        }
+        if (this.getMonthName().equals("October"))
+        {
+            return 9;
+        }
+        if (this.getMonthName().equals("November"))
+        {
+            return 10;
+        }
+        if (this.getMonthName().equals("December"))
+        {
+            return 11;
+        }
+
+        return -1;
+
     }
 }
