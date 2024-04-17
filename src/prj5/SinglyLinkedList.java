@@ -450,13 +450,46 @@ public class SinglyLinkedList<E>
         return false;
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public void sort(Comparator<? super E> c) {
-        Object[] array = this.toArray();
+        // Break into sorted and unsorted chain
+        Node unsorted = head.next();
+        Node sorted = head;
+        sorted.setNext(null);
         
-        for (int i = 1; i < array.length; i++) {
-            int prev = i - 1;
-            
+        while (unsorted != null) {
+            Node insertNode = unsorted;
+            unsorted = unsorted.next();
+            insertInOrder(insertNode, c);
         }
+    }
+    
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param insertNode
+     * @param c
+     */
+    public void insertInOrder(Node<E> insertNode, Comparator<? super E> c) {
+        E item = insertNode.getData();
+        
+        // what head is this
+        Node<E> currentNode = head;        
+        Node<E> stepNode =  head.next();
+        
+        // Edge case if only one node in the sorted list
+        if (stepNode == null) {
+            currentNode.setNext(insertNode);
+        }
+        
+        while ((stepNode != null) && 
+           (c.compare(stepNode.getData(), item) >= 0)) {
+            currentNode = currentNode.next();
+            stepNode = stepNode.next();
+        }
+            
+        insertNode.setNext(stepNode);
+        currentNode.setNext(insertNode);  
     }
 
     public static class Node<D>
