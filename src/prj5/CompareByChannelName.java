@@ -2,6 +2,14 @@ package prj5;
 
 import java.util.Comparator;
 
+//-------------------------------------------------------------------------
+/**
+* Compares two Channel Name's and sees if this is greater than other
+* based on lexile order
+* 
+* @author Lucas Lombardi
+* @version Apr 17, 2024
+*/
 public class CompareByChannelName implements Comparator<Influencer>{
   
     /*
