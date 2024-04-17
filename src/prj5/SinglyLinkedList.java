@@ -1,5 +1,7 @@
 package prj5;
 
+import java.util.Comparator;
+
 // -------------------------------------------------------------------------
 /**
  * The SinglyLinkedList class is a basic implementation of the LinkedList
@@ -448,9 +450,14 @@ public class SinglyLinkedList<E>
         return false;
     }
 
-    // public void sort(Comparator<? super E> c) {
-    // TODO Auto-generated method stub
-    // }
+    public void sort(Comparator<? super E> c) {
+        Object[] array = this.toArray();
+        
+        for (int i = 1; i < array.length; i++) {
+            int prev = i - 1;
+            
+        }
+    }
 
     public static class Node<D>
     {
