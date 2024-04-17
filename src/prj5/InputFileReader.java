@@ -96,9 +96,9 @@ public class InputFileReader
      *            is the month we are checking
      * @return if its valid
      */
-    public boolean isValidMonth(String month)
+    public boolean isValidMonth(Month month)
     {
-
+        return (month.getMonthIndex() != -1);
     }
 
 
