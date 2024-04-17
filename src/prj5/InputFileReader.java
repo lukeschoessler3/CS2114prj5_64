@@ -21,7 +21,7 @@ public class InputFileReader
      */
     public static final int MONTH_TOKENS = 4;
     private SinglyLinkedList<Influencer> infData;
-    private GUIInfluencerWindow influencerWindow;
+    
 
     /**
      * creates a new InputFileReader object
@@ -34,7 +34,7 @@ public class InputFileReader
         FileNotFoundException
     {
         infData = new SinglyLinkedList<>();
-        influencerWindow = new GUIInfluencerWindow();
+        //influencerWindow = new GUIInfluencerWindow();
 
         // scanner
         File file = new File(fileName);
@@ -71,9 +71,10 @@ public class InputFileReader
         }
         scanner.close();
     }
+    }
 
 
-    private int toInt(Stirng str)
+    private int toInt(String str)
     {
         try
         {
@@ -97,8 +98,8 @@ public class InputFileReader
     {
 
     }
-    
-    
+
+
     private Influencer getInfluencerByUsername(String username)
     {
         for (Influencer influencer : influencerList)
