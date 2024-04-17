@@ -194,7 +194,7 @@ public class InfluencerTest
     public void testSortMonths()
     {
         inf.sortMonths();
-        
+
         assertEquals(inf.getMonth(0).getMonthName(), "January");
     }
 }

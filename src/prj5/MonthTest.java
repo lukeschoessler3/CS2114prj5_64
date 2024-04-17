@@ -141,7 +141,7 @@ public class MonthTest
     public void testCompare()
     {
         Month sameMonth = new Month("January", 1000, 40, 2600, 16, 4000);
-        
+
         assertEquals(comp.compare(month, sameMonth), 0);
         assertEquals(comp.compare(month, jun), -1);
         assertEquals(comp.compare(jun, month), 1);
