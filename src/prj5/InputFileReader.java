@@ -45,7 +45,9 @@ public class InputFileReader
 
         // skip header
         scanner.nextLine();
-        int count = 0;
+        int infCount = 0;
+        int monthCount = 0;
+        int maxInf = 4;
 
         while (scanner.hasNextLine())
         {
@@ -72,22 +74,25 @@ public class InputFileReader
             }
 
             Influencer influencer = getInfluencerByUsername(username);
-            if (count == 0 || infData.get(count - 1).getUsername() != username)
+            for (int i = 0; i < maxInf; i++)
             {
-                Month[] monthArray = new Month[12];
-                influencer = new Influencer(
-                    username,
-                    channel,
-                    country,
-                    mainTopic,
-                    monthArray);
-                infData.add(influencer);
+                if (infCount == 0 || infData.get(i).getUsername() != username)
+                {
+                    Month[] monthArray = new Month[12];
+                    influencer = new Influencer(
+                        username,
+                        channel,
+                        country,
+                        mainTopic,
+                        monthArray);
+                    infData.add(influencer);
+                    infCount++;
+                }
+                else
+                {
+                    infData.get(i).getMonthArray()[monthCount] = newMonth;
+                }
             }
-            else
-            {
-                monthArray[index] = newMonth;
-            }
-            count++;
             scanner.close();
         }
     }
