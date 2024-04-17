@@ -45,6 +45,7 @@ public class InputFileReader
 
         // skip header
         scanner.nextLine();
+        int count = 0;
 
         while (scanner.hasNextLine())
         {
@@ -65,18 +66,28 @@ public class InputFileReader
             Month newMonth =
                 new Month(monthName, likes, comments, views, posts, followers);
 
-            if (!isValidMonth(month))
+            if (!isValidMonth(newMonth))
             {
                 continue;
             }
 
             Influencer influencer = getInfluencerByUsername(username);
-            if (influencer == null)
+            if (count == 0 || infData.get(count - 1).getUsername() != username)
             {
-                influencer =
-                    new Influencer(username, channel, country, mainTopic);
+                Month[] monthArray = new Month[12];
+                influencer = new Influencer(
+                    username,
+                    channel,
+                    country,
+                    mainTopic,
+                    monthArray);
                 infData.add(influencer);
             }
+            else
+            {
+                monthArray[index] = newMonth;
+            }
+            count++;
             scanner.close();
         }
     }
