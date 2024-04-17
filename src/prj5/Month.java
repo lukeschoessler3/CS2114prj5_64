@@ -1,5 +1,14 @@
 package prj5;
 
+import java.util.Comparator;
+
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Luke Schoessler (lukeschoessler3)
+
 // -------------------------------------------------------------------------
 /**
  * Creates the Month class with data per each month allowing the data to be
@@ -128,14 +137,108 @@ public class Month
 
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * Gets the index of the month
      * 
-     * @param otherMonth
-     * @return returns -1 if less than otherMonth, 1 if greater, and 0 if they
-     *             are the same
+     * @return returns the index of the month and -1 if the month is invalid
      */
-    public int compareTo(Month otherMonth)
+    public int getMonthIndex()
     {
-        return 0;
+        if (this.getMonthName().equals("January"))
+        {
+            return 0;
+        }
+        if (this.getMonthName().equals("February"))
+        {
+            return 1;
+        }
+        if (this.getMonthName().equals("March"))
+        {
+            return 2;
+        }
+        if (this.getMonthName().equals("April"))
+        {
+            return 3;
+        }
+        if (this.getMonthName().equals("May"))
+        {
+            return 4;
+        }
+        if (this.getMonthName().equals("June"))
+        {
+            return 5;
+        }
+        if (this.getMonthName().equals("July"))
+        {
+            return 6;
+        }
+        if (this.getMonthName().equals("August"))
+        {
+            return 7;
+        }
+        if (this.getMonthName().equals("September"))
+        {
+            return 8;
+        }
+        if (this.getMonthName().equals("October"))
+        {
+            return 9;
+        }
+        if (this.getMonthName().equals("November"))
+        {
+            return 10;
+        }
+        if (this.getMonthName().equals("December"))
+        {
+            return 11;
+        }
+
+        return -1;
+
     }
+
+    // -------------------------------------------------------------------------
+    /**
+     * This is a class within the month class to compare months by their names
+     * 
+     * @author Luke Schoessler
+     * @version Apr 16, 2024
+     */
+    public static final class MonthNameComparator
+        implements Comparator<Month>
+    {
+        // ----------------------------------------------------------
+        /**
+         * Compares months
+         * 
+         * @param month
+         *            first month
+         * @param otherMonth
+         *            other month
+         * @return returns -1 if less than otherMonth, 1 if greater, and 0 if
+         *             they are the same
+         */
+        public int compare(Month month, Month otherMonth)
+        {
+
+            if (month.getMonthIndex() == -1 || otherMonth.getMonthIndex() == -1)
+            {
+                return 100;
+            }
+
+            if (month.getMonthIndex() < (otherMonth.getMonthIndex()))
+            {
+                return -1;
+            }
+
+            if (month.getMonthIndex() > (otherMonth.getMonthIndex()))
+            {
+                return 1;
+            }
+
+            return 0;
+
+        }
+
+    }
+
 }

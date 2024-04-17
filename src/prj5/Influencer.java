@@ -1,5 +1,15 @@
 package prj5;
 
+import java.util.Arrays;
+import prj5.Month.MonthNameComparator;
+
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Luke Schoessler (lukeschoessler3)
+
 // -------------------------------------------------------------------------
 /**
  * Creates the Influencer class with influencer data and an array of months to
@@ -15,10 +25,11 @@ public class Influencer
     private String channelName;
     private String country;
     private String mainTopic;
-    private static final int ARRAY_LENGTH = 12;
     private Month[] monthArray;
+    private static final int ARRAY_LENGTH = 12;
 
     // ----------------------------------------------------------
+
     /**
      * Create a new Influencer object.
      * 
@@ -179,12 +190,12 @@ public class Influencer
      * 
      * @return returns the traditional engagement rate for the first quarter
      */
-    public int traditionalEngagementRate()
+    public double traditionalEngagementRate()
     {
-        int sumComments = 0;
-        int sumLikes = 0;
-        int sumFollowers = 0;
-        int engagementRate = 0;
+        double sumComments = 0;
+        double sumLikes = 0;
+        double sumFollowers = 0;
+        double engagementRate = 0;
         Month[] firstQuarter = getFirstQuarter();
 
         // Check that the first quarter is not null and if so return 0
@@ -198,10 +209,9 @@ public class Influencer
         {
             sumComments += firstQuarter[i].getComments();
             sumLikes += firstQuarter[i].getLikes();
-            sumFollowers += firstQuarter[i].getFollowers();
         }
 
-        engagementRate = ((sumComments + sumLikes) / sumFollowers) * 100;
+        engagementRate = ((sumComments + sumLikes) / firstQuarter[2].getFollowers()) * 100;
         return engagementRate;
     }
 
@@ -212,12 +222,12 @@ public class Influencer
      * 
      * @return returns the reach engagement rate
      */
-    public int reachEngagementRate()
+    public double reachEngagementRate()
     {
-        int sumComments = 0;
-        int sumLikes = 0;
-        int sumViews = 0;
-        int engagementRate = 0;
+        double sumComments = 0;
+        double sumLikes = 0;
+        double sumViews = 0;
+        double engagementRate = 0;
         Month[] firstQuarter = getFirstQuarter();
 
         // Check that the first quarter is not null and if so return 0
@@ -236,6 +246,20 @@ public class Influencer
 
         engagementRate = ((sumComments + sumLikes) / sumViews) * 100;
         return engagementRate;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Sorts the array of months based on the month and uses Arrays.sort() to
+     * sort our month data by name and the Arrays.sort() will help us order the
+     * array of months that each influencer has. This was ok'd by the instructor
+     */
+    public void sortMonths()
+    {
+        MonthNameComparator comparator = new MonthNameComparator();
+
+        Arrays.sort(monthArray, comparator);
     }
 
 }
