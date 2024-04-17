@@ -3,6 +3,13 @@ package prj5;
 import prj5.Month.MonthNameComparator;
 import student.TestCase;
 
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Luke Schoessler (lukeschoessler3)
+
 // -------------------------------------------------------------------------
 /**
  * This class tests the methods from the Influencer class
@@ -156,7 +163,7 @@ public class InfluencerTest
      */
     public void testTraditionalEngagementRate()
     {
-        assertEquals(inf.traditionalEngagementRate(), 26.0, .01);
+        assertEquals(inf.traditionalEngagementRate(), 78.0, .01);
 
         Month[] months2 = new Month[] { none, jun, aug, dec, jan, mar, apr, may,
             nov, sep, oct, jul };

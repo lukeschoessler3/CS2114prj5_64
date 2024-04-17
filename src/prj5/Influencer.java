@@ -3,6 +3,13 @@ package prj5;
 import java.util.Arrays;
 import prj5.Month.MonthNameComparator;
 
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Luke Schoessler (lukeschoessler3)
+
 // -------------------------------------------------------------------------
 /**
  * Creates the Influencer class with influencer data and an array of months to
@@ -202,10 +209,9 @@ public class Influencer
         {
             sumComments += firstQuarter[i].getComments();
             sumLikes += firstQuarter[i].getLikes();
-            sumFollowers += firstQuarter[i].getFollowers();
         }
 
-        engagementRate = ((sumComments + sumLikes) / sumFollowers) * 100;
+        engagementRate = ((sumComments + sumLikes) / firstQuarter[2].getFollowers()) * 100;
         return engagementRate;
     }
 
