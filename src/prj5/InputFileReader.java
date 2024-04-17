@@ -29,6 +29,8 @@ public class InputFileReader
      * 
      * @param fileName
      *            is the name of the file containing the influencer data
+     * @throws ParseException
+     * @throws FileNotFoundException
      */
     public InputFileReader(String fileName)
         throws ParseException,
@@ -43,13 +45,16 @@ public class InputFileReader
 
         // skip header
         scanner.nextLine();
+        int infCount = 0;
+        int monthCount = 0;
+        int maxInf = 4;
 
         while (scanner.hasNextLine())
         {
             String line = scanner.nextLine();
             String[] values = line.split(",");
 
-            String month = values[0];
+            String monthName = values[0];
             String username = values[1];
             String channel = values[2];
             String country = values[3];
@@ -59,17 +64,34 @@ public class InputFileReader
             int followers = toInt(values[7]);
             int comments = toInt(values[8]);
             int views = toInt(values[9]);
-            if (!isValidMonth(month))
+
+            Month newMonth =
+                new Month(monthName, likes, comments, views, posts, followers);
+
+            if (!isValidMonth(newMonth))
             {
                 continue;
             }
 
             Influencer influencer = getInfluencerByUsername(username);
-            if (influencer == null)
+            for (int i = 0; i < maxInf; i++)
             {
-                influencer =
-                    new Influencer(username, channel, country, mainTopic);
-                influencerList.add(influencer);
+                if (infCount == 0 || infData.get(i).getUsername() != username)
+                {
+                    Month[] monthArray = new Month[12];
+                    influencer = new Influencer(
+                        username,
+                        channel,
+                        country,
+                        mainTopic,
+                        monthArray);
+                    infData.add(influencer);
+                    infCount++;
+                }
+                else
+                {
+                    infData.get(i).getMonthArray()[monthCount] = newMonth;
+                }
             }
             scanner.close();
         }
@@ -104,7 +126,7 @@ public class InputFileReader
 
     private Influencer getInfluencerByUsername(String username)
     {
-        for (Influencer influencer : influencerList)
+        for (Influencer influencer : infData)
         {
             if (influencer.getUsername().equals(username))
             {
