@@ -194,7 +194,6 @@ public class Influencer
     {
         double sumComments = 0;
         double sumLikes = 0;
-        double sumFollowers = 0;
         double engagementRate = 0;
         Month[] firstQuarter = getFirstQuarter();
 
@@ -261,5 +260,4 @@ public class Influencer
 
         Arrays.sort(monthArray, comparator);
     }
-
 }

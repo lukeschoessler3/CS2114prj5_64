@@ -1,5 +1,8 @@
 package prj5;
 
+import java.io.FileNotFoundException;
+import java.text.ParseException;
+
 // Virginia Tech Honor Code Pledge:
 //
 // As a Hokie, I will conduct myself with honor and integrity at all times.
@@ -16,10 +19,33 @@ package prj5;
  */
 public class ProjectRunner
 {
+
     // ~ Fields ................................................................
 
-    // ~ Constructors ..........................................................
+    // ~Public Methods ........................................................\
+    // // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * 
+     * @param args
+     * @throws FileNotFoundException
+     * @throws ParseException
+     */
+    public static void main(String[] args)
+        throws FileNotFoundException,
+        ParseException
+    {
 
-    // ~Public Methods ........................................................
+        InputFileReader filer;
+
+        if (args.length > 0)
+        {
+            filer = new InputFileReader(args[0]);
+        }
+        else
+        {
+            filer = new InputFileReader("SampleInput1_2023.csv");
+        }
+    }
 
 }
