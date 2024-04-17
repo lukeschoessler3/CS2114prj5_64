@@ -1,5 +1,7 @@
 package prj5;
 
+import java.util.Comparator;
+
 // -------------------------------------------------------------------------
 /**
  * Creates the Month class with data per each month allowing the data to be
@@ -128,37 +130,6 @@ public class Month
 
     // ----------------------------------------------------------
     /**
-     * Compares months
-     * 
-     * @param otherMonth
-     * @return returns -1 if less than otherMonth, 1 if greater, and 0 if they
-     *             are the same
-     */
-    public int compareTo(Month otherMonth)
-    {
-
-        if (this.getMonthIndex() == -1 || otherMonth.getMonthIndex() == -1)
-        {
-            return 100;
-        }
-
-        if (this.getMonthIndex() < (otherMonth.getMonthIndex()))
-        {
-            return -1;
-        }
-
-        if (this.getMonthIndex() > (otherMonth.getMonthIndex()))
-        {
-            return 1;
-        }
-
-        return 0;
-
-    }
-
-
-    // ----------------------------------------------------------
-    /**
      * Gets the index of the month
      * 
      * @return returns the index of the month and -1 if the month is invalid
@@ -217,4 +188,50 @@ public class Month
         return -1;
 
     }
+
+    // -------------------------------------------------------------------------
+    /**
+     * This is a class within the month class to compare months by their names
+     * 
+     * @author Luke Schoessler
+     * @version Apr 16, 2024
+     */
+    public static final class MonthNameComparator
+        implements Comparator<Month>
+    {
+        // ----------------------------------------------------------
+        /**
+         * Compares months
+         * 
+         * @param month
+         *            first month
+         * @param otherMonth
+         *            other month
+         * @return returns -1 if less than otherMonth, 1 if greater, and 0 if
+         *             they are the same
+         */
+        public int compare(Month month, Month otherMonth)
+        {
+
+            if (month.getMonthIndex() == -1 || otherMonth.getMonthIndex() == -1)
+            {
+                return 100;
+            }
+
+            if (month.getMonthIndex() < (otherMonth.getMonthIndex()))
+            {
+                return -1;
+            }
+
+            if (month.getMonthIndex() > (otherMonth.getMonthIndex()))
+            {
+                return 1;
+            }
+
+            return 0;
+
+        }
+
+    }
+
 }

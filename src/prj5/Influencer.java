@@ -1,5 +1,8 @@
 package prj5;
 
+import java.util.Arrays;
+import prj5.Month.MonthNameComparator;
+
 // -------------------------------------------------------------------------
 /**
  * Creates the Influencer class with influencer data and an array of months to
@@ -15,10 +18,11 @@ public class Influencer
     private String channelName;
     private String country;
     private String mainTopic;
-    private static final int ARRAY_LENGTH = 12;
     private Month[] monthArray;
+    private static final int ARRAY_LENGTH = 12;
 
     // ----------------------------------------------------------
+
     /**
      * Create a new Influencer object.
      * 
@@ -179,12 +183,12 @@ public class Influencer
      * 
      * @return returns the traditional engagement rate for the first quarter
      */
-    public int traditionalEngagementRate()
+    public double traditionalEngagementRate()
     {
-        int sumComments = 0;
-        int sumLikes = 0;
-        int sumFollowers = 0;
-        int engagementRate = 0;
+        double sumComments = 0;
+        double sumLikes = 0;
+        double sumFollowers = 0;
+        double engagementRate = 0;
         Month[] firstQuarter = getFirstQuarter();
 
         // Check that the first quarter is not null and if so return 0
@@ -212,12 +216,12 @@ public class Influencer
      * 
      * @return returns the reach engagement rate
      */
-    public int reachEngagementRate()
+    public double reachEngagementRate()
     {
-        int sumComments = 0;
-        int sumLikes = 0;
-        int sumViews = 0;
-        int engagementRate = 0;
+        double sumComments = 0;
+        double sumLikes = 0;
+        double sumViews = 0;
+        double engagementRate = 0;
         Month[] firstQuarter = getFirstQuarter();
 
         // Check that the first quarter is not null and if so return 0
@@ -245,7 +249,9 @@ public class Influencer
      */
     public void sortMonths()
     {
-        
+        MonthNameComparator comparator = new MonthNameComparator();
+
+        Arrays.sort(monthArray, comparator);
     }
 
 }
