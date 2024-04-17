@@ -245,7 +245,9 @@ public class Influencer
 
     // ----------------------------------------------------------
     /**
-     * Sorts the array of months based on the month
+     * Sorts the array of months based on the month and uses Arrays.sort() to
+     * sort our month data by name and the Arrays.sort() will help us order the
+     * array of months that each influencer has. This was ok'd by the instructor
      */
     public void sortMonths()
     {
