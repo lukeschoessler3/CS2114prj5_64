@@ -261,5 +261,4 @@ public class Influencer
 
         Arrays.sort(monthArray, comparator);
     }
-
 }
