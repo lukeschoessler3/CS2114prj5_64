@@ -1,7 +1,9 @@
 package prj5;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
+import java.util.Scanner;
 
 /**
  * // -------------------------------------------------------------------------
@@ -21,7 +23,6 @@ public class InputFileReader
      */
     public static final int MONTH_TOKENS = 4;
     private SinglyLinkedList<Influencer> infData;
-    
 
     /**
      * creates a new InputFileReader object
@@ -34,7 +35,7 @@ public class InputFileReader
         FileNotFoundException
     {
         infData = new SinglyLinkedList<>();
-        //influencerWindow = new GUIInfluencerWindow();
+        // influencerWindow = new GUIInfluencerWindow();
 
         // scanner
         File file = new File(fileName);
@@ -62,15 +63,16 @@ public class InputFileReader
             {
                 continue;
             }
-            
+
             Influencer influencer = getInfluencerByUsername(username);
             if (influencer == null)
             {
-                influencer = new Influencer(username, channel, country, mainTopic);
+                influencer =
+                    new Influencer(username, channel, country, mainTopic);
                 influencerList.add(influencer);
+            }
+            scanner.close();
         }
-        scanner.close();
-    }
     }
 
 
@@ -94,9 +96,9 @@ public class InputFileReader
      *            is the month we are checking
      * @return if its valid
      */
-    public boolean isValidMonth(String month)
+    public boolean isValidMonth(Month month)
     {
-
+        return (month.getMonthIndex() != -1);
     }
 
 
