@@ -7,7 +7,7 @@ package prj5;
  * 
  * @author Kean Jaldin Guzman (Keanjg28)
  * @param <E>
- *            object type
+ *         object type
  * @version Apr 17, 2024
  */
 public interface LinkedList<E>
