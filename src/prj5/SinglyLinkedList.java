@@ -2,30 +2,33 @@ package prj5;
 
 // -------------------------------------------------------------------------
 /**
- * The SinglyLinkedList class is a basic implementation of the LinkedList 
+ * The SinglyLinkedList class is a basic implementation of the LinkedList
  * interface
  * 
- *  @author kjald
- *  @param <E>
- *          object type
- *  @version Apr 17, 2024
+ * @author kjald
+ * @param <E>
+ *            object type
+ * @version Apr 17, 2024
  */
-public class SinglyLinkedList<E> implements LinkedList<E>
+public class SinglyLinkedList<E>
+    implements LinkedList<E>
 {
-    //~ Fields ................................................................
+    // ~ Fields ................................................................
     private Node<E> head;
     private int size;
 
-    //~ Constructors ..........................................................
+    // ~ Constructors ..........................................................
     /**
      * creates a new SinglyLinkedList object
      */
-    public SinglyLinkedList() {
+    public SinglyLinkedList()
+    {
         head = null;
         size = 0;
     }
 
-    //~Public  Methods ........................................................
+
+    // ~Public Methods ........................................................
     /**
      * Gets the number of elements in the SinglyLinkedList
      *
@@ -36,6 +39,7 @@ public class SinglyLinkedList<E> implements LinkedList<E>
     {
         return size;
     }
+
 
     /**
      * Adds the object to the position in the list
@@ -53,7 +57,7 @@ public class SinglyLinkedList<E> implements LinkedList<E>
     @Override
     public void add(int index, E obj)
     {
-     // check if the object is null
+        // check if the object is null
         if (obj == null)
         {
             throw new IllegalArgumentException("Object is null");
@@ -108,6 +112,7 @@ public class SinglyLinkedList<E> implements LinkedList<E>
         size++;
     }
 
+
     /**
      * Adds the object to the end of the list.
      *
@@ -120,7 +125,7 @@ public class SinglyLinkedList<E> implements LinkedList<E>
     @Override
     public void add(E obj)
     {
-     // check if the object is null
+        // check if the object is null
         if (obj == null)
         {
             throw new IllegalArgumentException("Object is null");
@@ -151,7 +156,8 @@ public class SinglyLinkedList<E> implements LinkedList<E>
         }
         size++;
     }
-    
+
+
     /**
      * Checks if the array is empty
      *
@@ -162,6 +168,7 @@ public class SinglyLinkedList<E> implements LinkedList<E>
     {
         return (size == 0);
     }
+
 
     /**
      * Removes the first instance of the given object from the list
@@ -198,6 +205,7 @@ public class SinglyLinkedList<E> implements LinkedList<E>
         // this accounts for the isEmpty case or the object does not exist
         return false;
     }
+
 
     /**
      * Removes the object at the given position
@@ -244,6 +252,7 @@ public class SinglyLinkedList<E> implements LinkedList<E>
 
     }
 
+
     /**
      * Gets the object at the given position
      *
@@ -278,6 +287,7 @@ public class SinglyLinkedList<E> implements LinkedList<E>
         return data;
     }
 
+
     /**
      * Checks if the list contains the given object
      *
@@ -301,6 +311,7 @@ public class SinglyLinkedList<E> implements LinkedList<E>
         return false;
     }
 
+
     /**
      * Removes all of the elements from the list
      */
@@ -315,6 +326,7 @@ public class SinglyLinkedList<E> implements LinkedList<E>
             size = 0;
         }
     }
+
 
     /**
      * Gets the last time the given object is in the list
@@ -341,7 +353,8 @@ public class SinglyLinkedList<E> implements LinkedList<E>
         }
         return lastIndex;
     }
-    
+
+
     /**
      * Returns a string representation of the list If a list contains A, B, and
      * C, the following should be returned "{A, B, C}" (Without the quotations)
@@ -366,7 +379,8 @@ public class SinglyLinkedList<E> implements LinkedList<E>
         result += "}";
         return result;
     }
-    
+
+
     /**
      * Returns an array representation of the list If a list contains A, B, and
      * C, the following should be returned {A, B, C}, If a list contains A, B,
@@ -390,7 +404,8 @@ public class SinglyLinkedList<E> implements LinkedList<E>
 
         return array;
     }
-    
+
+
     /**
      * Returns true if both lists have the exact same contents in the exact same
      * order
@@ -432,23 +447,27 @@ public class SinglyLinkedList<E> implements LinkedList<E>
 
         return false;
     }
-    
-    //public void sort(Comparator<? super E> c) {
-     // TODO Auto-generated method stub
-    //}
-    
-    
-    public static class Node<D> {
-        //~ Fields .............................................................
+
+    // public void sort(Comparator<? super E> c) {
+    // TODO Auto-generated method stub
+    // }
+
+    public static class Node<D>
+    {
+        // ~ Fields
+        // .............................................................
         private D data;
         private Node<D> next;
-        
-        //~ Constructors .......................................................
-        public Node(D d) {
+
+        // ~ Constructors
+        // .......................................................
+        public Node(D d)
+        {
             data = d;
         }
-        
-        //~Public  Methods .....................................................
+
+
+        // ~Public Methods .....................................................
         /**
          * Sets the node after this node
          *
@@ -482,4 +501,4 @@ public class SinglyLinkedList<E> implements LinkedList<E>
             return data;
         }
     } // end of Node class
-} //end of SinglyLinkedList
+} // end of SinglyLinkedList
