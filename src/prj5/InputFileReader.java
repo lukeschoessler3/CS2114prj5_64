@@ -73,7 +73,7 @@ public class InputFileReader
     }
 
 
-    private int toInt(Stirng str)
+    private int toInt(String str)
     {
         try
         {
