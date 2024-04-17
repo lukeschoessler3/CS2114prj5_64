@@ -97,8 +97,8 @@ public class InputFileReader
     {
 
     }
-    
-    
+
+
     private Influencer getInfluencerByUsername(String username)
     {
         for (Influencer influencer : influencerList)
