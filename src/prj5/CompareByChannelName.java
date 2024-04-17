@@ -15,8 +15,6 @@ public class CompareByChannelName implements Comparator<Influencer>{
      *         0 if both lexile orders of left and right are equal
      */
     public int compare(Influencer left, Influencer right) {
-        
+        return left.getChannelName().compareTo(right.getChannelName());
     }
-  
-
 }
