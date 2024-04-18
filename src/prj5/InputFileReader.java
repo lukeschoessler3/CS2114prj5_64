@@ -2,8 +2,9 @@ package prj5;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * // -------------------------------------------------------------------------
@@ -23,6 +24,8 @@ public class InputFileReader
      */
     public static final int MONTH_TOKENS = 4;
     private SinglyLinkedList<Influencer> infData;
+    private static final String TRADITIONAL = "traditional";
+    private static final String REACH = "reach";
 
     /**
      * creates a new InputFileReader object
@@ -47,7 +50,7 @@ public class InputFileReader
      *            file to read through
      * @return returns a linked list of Influencers
      */
-    private SinglyLinkedList<Influencer> readFile(String fileName)
+    public SinglyLinkedList<Influencer> readFile(String fileName)
         throws ParseException,
         FileNotFoundException
     {
@@ -196,4 +199,63 @@ public class InputFileReader
         }
         return i;
     }
+
+
+    /**
+     * prints the output data to the console. Called by project runner
+     */
+    public void printInfData(String type)
+    {
+        DataProcessor dataProcessor = new DataProcessor(infData);
+        if (type.equals(TRADITIONAL))
+        {
+            dataProcessor.printTraditionalEngagementData();
+        }
+        else if (type.equals(REACH))
+        {
+            dataProcessor.printReachEngagementData();
+        }
+    }
+
+    private static class DataProcessor
+    {
+        private SinglyLinkedList<Influencer> infData;
+        private DecimalFormat df;
+
+        public DataProcessor(SinglyLinkedList<Influencer> infData)
+        {
+            this.infData = infData;
+            this.df = new DecimalFormat("#.#");
+        }
+
+
+        private void printTraditionalEngagementData()
+        {
+            for (int i = 0; i < infData.size(); i++)
+            {
+                Influencer influencer = infData.get(i);
+                System.out.println(influencer.getChannelName());
+                double rate = influencer.traditionalEngagementRate();
+                System.out.println("traditional: " + df.format(rate));
+                System.out.println("==========");
+            }
+            System.out.println("**********");
+            System.out.println("**********");
+        }
+
+
+        private void printReachEngagementData()
+        {
+            for (int i = 0; i < infData.size(); i++)
+            {
+                Influencer influencer = infData.get(i);
+                System.out.println(influencer.getChannelName());
+                double rate = influencer.reachEngagementRate();
+                System.out.println("reach: " + df.format(rate));
+                System.out.println("==========");
+            }
+
+        }
+    }
+
 }

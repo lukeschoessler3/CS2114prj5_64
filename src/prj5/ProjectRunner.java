@@ -22,6 +22,8 @@ public class ProjectRunner
 
     // ~ Fields ................................................................
 
+    private StringBuilder sb;
+
     // ~Public Methods ........................................................\
     // // ----------------------------------------------------------
     /**
@@ -46,6 +48,20 @@ public class ProjectRunner
         {
             filer = new InputFileReader("SampleInput1_2023.csv");
         }
+
+        boolean showConsole = true;
+        boolean showGUI = false;
+
+        if (showConsole)
+        {
+            filer.printDataToConsole();
+
+        }
+        if (showGUI)
+        {
+            // Should not be implemented till final submission
+        }
     }
+
 
 }
