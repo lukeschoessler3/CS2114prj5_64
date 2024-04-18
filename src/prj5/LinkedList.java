@@ -1,5 +1,11 @@
 package prj5;
 
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times. I
+// will not lie, cheat, or steal, nor will I accept the actions of those who do.
+// -- Kean Jaldin Guzman (keanjg28)
+
 // -------------------------------------------------------------------------
 /**
  * The LinkedList interface provides definitions for all of the methods
@@ -7,12 +13,12 @@ package prj5;
  * 
  * @author Kean Jaldin Guzman (Keanjg28)
  * @param <E>
- *         object type
+ *            object type
  * @version Apr 17, 2024
  */
 public interface LinkedList<E>
 {
-    /** 
+    /**
      * Gets the number of elements in the list
      *
      * @return the number of elements

@@ -145,12 +145,14 @@ public class Influencer
      * @return returns the first month with same name as the parameter
      */
     public Month getMonth(String nameOfMonth)
-    {       
+    {
         for (int i = 0; i < ARRAY_LENGTH; i++)
         {
-            if (monthArray[i] == null) {
+            if (monthArray[i] == null)
+            {
+                i += 0;
             }
-            
+
             else if (monthArray[i].getMonthName().equals(nameOfMonth))
             {
                 return monthArray[i];
@@ -168,13 +170,14 @@ public class Influencer
      */
     public Month[] getFirstQuarter()
     {
-        for (int i = 0; i < 2; i++) {
-            if (monthArray[i] == null) {
+        for (int i = 0; i < 2; i++)
+        {
+            if (monthArray[i] == null)
+            {
                 return null;
             }
         }
-        
-        
+
         Month[] firstQuarter = new Month[3];
 
         firstQuarter[0] = getMonth("January");
@@ -220,7 +223,8 @@ public class Influencer
             sumLikes += firstQuarter[i].getLikes();
         }
 
-        engagementRate = ((sumComments + sumLikes) / firstQuarter[2].getFollowers()) * 100;
+        engagementRate =
+            ((sumComments + sumLikes) / firstQuarter[2].getFollowers()) * 100;
         return engagementRate;
     }
 

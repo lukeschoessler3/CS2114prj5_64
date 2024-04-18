@@ -34,11 +34,13 @@ public class InfluencerTest
     private Month nov;
     private Month dec;
     private Month none;
-    private MonthNameComparator comp;
     private Influencer inf;
     private Month[] months;
 
     // ~Public Methods ........................................................
+    /**
+     * Creates a brand new influencer for testing
+     */
     public void setUp()
     {
         jan = new Month("January", 1000, 40, 2600, 16, 4000);
@@ -54,7 +56,6 @@ public class InfluencerTest
         nov = new Month("November", 1000, 40, 2600, 16, 4000);
         dec = new Month("December", 1000, 40, 2600, 16, 4000);
         none = new Month("None", 1000, 40, 2600, 16, 4000);
-        comp = new MonthNameComparator();
 
         months = new Month[] { feb, jun, aug, dec, jan, mar, apr, may, nov, sep,
             oct, jul };
@@ -113,6 +114,8 @@ public class InfluencerTest
     public void testGetMonthArray()
     {
         assertEquals(inf.getMonthArray()[0].getMonthName(), "February");
+
+        feb.getMonthName();
     }
 
 
@@ -154,14 +157,14 @@ public class InfluencerTest
             new Influencer("Sidemen", "sidemen", "England", "IRL", months2);
 
         assertNull(inf2.getFirstQuarter());
-        
+
         Month[] months3 = new Month[12];
         months[0] = jan;
-        Influencer inf3 = 
+        Influencer inf3 =
             new Influencer("Alpha", "alpha", "CZ", "Sports", months3);
-        
+
         assertNull(inf3.getFirstQuarter());
-        
+
     }
 
 
