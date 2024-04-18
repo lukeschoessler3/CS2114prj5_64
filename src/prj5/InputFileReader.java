@@ -10,7 +10,7 @@ import java.util.*;
  * // -------------------------------------------------------------------------
  * /** Parses through the input data from the text file.
  * 
- * @author jacks
+ * @author Jackson Bauer
  * @version Apr 15, 2024
  */
 public class InputFileReader
@@ -341,9 +341,8 @@ public class InputFileReader
         public void sortAlphabetically()
         {
             infData.sort(new Comparator<Influencer>() {
-                public
-                    int
-                    compare(Influencer influencer1, Influencer influencer2)
+                public int compare(Influencer influencer1, 
+                    Influencer influencer2)
                 {
                     return influencer1.getChannelName()
                         .compareToIgnoreCase(influencer2.getChannelName());
