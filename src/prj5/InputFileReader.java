@@ -326,7 +326,7 @@ public class InputFileReader
     /**
      * sorts the channel names alphabetically
      */
-    public void sortAlphabetically()
+    private void sortAlphabetically()
     {
         infData.sort(new Comparator<Influencer>() {
             public int compare(Influencer influencer1, Influencer influencer2)
@@ -341,7 +341,7 @@ public class InputFileReader
     /**
      * sorts the reach engagement in descending order
      */
-    public void sortByReachEngagement()
+    private void sortByReachEngagement()
     {
         infData.sort(new Comparator<Influencer>() {
             public int compare(Influencer inf1, Influencer inf2)
