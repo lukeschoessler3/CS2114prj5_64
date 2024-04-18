@@ -36,6 +36,14 @@ public class InputFileReader
         throws ParseException,
         FileNotFoundException
     {
+        infData = readFile(fileName);
+    }
+
+
+    private SinglyLinkedList<Influencer> readFile(String fileName)
+        throws ParseException,
+        FileNotFoundException
+    {
         infData = new SinglyLinkedList<>();
         // influencerWindow = new GUIInfluencerWindow();
 
@@ -46,7 +54,6 @@ public class InputFileReader
         // skip header
         scanner.nextLine();
         int infCount = 0;
-        int monthCount = 0;
         int maxInf = 4;
 
         while (scanner.hasNextLine())
@@ -73,12 +80,13 @@ public class InputFileReader
                 continue;
             }
 
-            Influencer influencer = getInfluencerByUsername(username);
+            Influencer influencer;
             for (int i = 0; i < maxInf; i++)
             {
                 if (infCount == 0 || infData.get(i).getUsername() != username)
                 {
                     Month[] monthArray = new Month[12];
+                    monthArray[0] = newMonth;
                     influencer = new Influencer(
                         username,
                         channel,
@@ -90,11 +98,22 @@ public class InputFileReader
                 }
                 else
                 {
-                    infData.get(i).getMonthArray()[monthCount] = newMonth;
+                    for (int j = 0; j < infCount; j++)
+                    {
+                        if (username == infData.get(j).getUsername())
+                        {
+                            infData.get(j).getMonthArray()[getItemsInArray(
+                                infData.get(j).getMonthArray())] = newMonth;
+                        }
+
+                    }
+
                 }
             }
             scanner.close();
+
         }
+        return infData;
     }
 
 
@@ -124,15 +143,21 @@ public class InputFileReader
     }
 
 
-    private Influencer getInfluencerByUsername(String username)
+    /**
+     * Gets the items in an array
+     * 
+     * @param array
+     *            array of months
+     * @return returns the items in an array
+     */
+    private int getItemsInArray(Month[] array)
     {
-        for (Influencer influencer : infData)
+        int i = 0;
+
+        while (array[i] != null)
         {
-            if (influencer.getUsername().equals(username))
-            {
-                return influencer;
-            }
+            i++;
         }
-        return null;
+        return i;
     }
 }
