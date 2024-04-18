@@ -489,7 +489,7 @@ public class SinglyLinkedList<E>
         
         // Locate where to insert
         while ((currentNode != null) && 
-           (c.compare(currentNode.getData(), item) >= 0)) {
+           (c.compare(currentNode.getData(), item) <= 0)) {
             previousNode = currentNode;
             currentNode = currentNode.next();
         }

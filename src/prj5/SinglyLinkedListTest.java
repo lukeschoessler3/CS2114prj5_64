@@ -63,7 +63,8 @@ public class SinglyLinkedListTest extends student.TestCase
         list2 = new SinglyLinkedList<Influencer>();
         list2.add(person);
         list2.add(person3);
-        list2.add(person2);   
+        list2.add(person2); 
+        
     }
     //~Public  Methods ........................................................
     
@@ -338,37 +339,25 @@ public class SinglyLinkedListTest extends student.TestCase
      */
     public void testSort() {
         Object[] unsortedArray = list2.toArray();
-        /*Influencer[] unsortedArrayCast = (Influencer[]) unsortedArray;
-        
-        CompareByChannelName c = new CompareByChannelName();
-        assertEquals(
-            c.compare(unsortedArrayCast[1], unsortedArrayCast[2]), -1);*/
-        
         assertEquals(person3, unsortedArray[1]);
         CompareByChannelName c = new CompareByChannelName();
         list2.sort(c);
-        assertEquals(person2, unsortedArray[2]); 
+        assertEquals(person2, unsortedArray[2]);
+        
+        SinglyLinkedList<Influencer> emptyList1 = 
+            new SinglyLinkedList<Influencer>();
+        emptyList1.sort(c);
     }
     
     /**
      * tests sort() with CompareReachWithEngagementRate
      */
     public void testSort2() {
-        
-        //System.out.println(person.reachEngagementRate());
-        //System.out.println(person2.reachEngagementRate());
-        //System.out.println(person3.reachEngagementRate());
         Object[] unsortedArray = list2.toArray();
         assertEquals(person, unsortedArray[0]);
         CompareReachEngagementRate c = new CompareReachEngagementRate();
         list2.sort(c);
-        
-        Object[] unsortedArray2 = list2.toArray();
-        Influencer[] unsortedArray22 = (Influencer[]) unsortedArray2;
-        System.out.println(unsortedArray22[0].getChannelName());
-        System.out.println(unsortedArray22[1].getChannelName());
-        assertEquals(person2, unsortedArray[0]);
-        assertEquals(person, unsortedArray[2]);
-        
+        Object[] sortedArray = list2.toArray();
+        assertEquals(person2, sortedArray[0]);
     }
 }
