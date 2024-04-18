@@ -152,8 +152,8 @@ public class MonthTest
         assertEquals(comp.compare(month, sameMonth), 0);
         assertEquals(comp.compare(month, jun), -1);
         assertEquals(comp.compare(jun, month), 1);
-        assertEquals(comp.compare(jun, none), 100);
-        assertEquals(comp.compare(none, jun), 100);
+        assertEquals(comp.compare(jun, null), 100);
+        assertEquals(comp.compare(null, jun), 100);
     }
 
 }
