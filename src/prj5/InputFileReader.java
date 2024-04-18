@@ -245,12 +245,15 @@ public class InputFileReader
 
         if (type.equals(TRADITIONAL))
         {
-            sortAlphabetically();
+            CompareByChannelName compare = new CompareByChannelName();
+            infData.sort(compare);
             printTraditionalEngagement();
         }
         else if (type.equals(REACH))
         {
-            sortByReachEngagement();
+            CompareReachEngagementRate compareReach =
+                new CompareReachEngagementRate();
+            infData.sort(compareReach);
             printReachEngagement();
         }
     }
