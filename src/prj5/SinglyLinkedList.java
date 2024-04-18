@@ -1,3 +1,9 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times. I
+// will not lie, cheat, or steal, nor will I accept the actions of those who do.
+// -- Kean Jaldin Guzman (keanjg28)
+// -- Lucas Lombardi 
 package prj5;
 
 import java.util.Comparator;
@@ -7,7 +13,8 @@ import java.util.Comparator;
  * The SinglyLinkedList class is a basic implementation of the LinkedList
  * interface
  * 
- * @author kjald
+ * @author Kean Jaldin Guzman (keanjg28)
+ * @author Lucas Lombardi
  * @param <E>
  *            object type
  * @version Apr 17, 2024
@@ -284,7 +291,6 @@ public class SinglyLinkedList<E>
         if (data == null)
         {
             // ... if so throw an exception
-            throw new IndexOutOfBoundsException("Index exceeds the size.");
         }
         return data;
     }

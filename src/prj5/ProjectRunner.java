@@ -22,6 +22,8 @@ public class ProjectRunner
 
     // ~ Fields ................................................................
 
+    
+
     // ~Public Methods ........................................................\
     // // ----------------------------------------------------------
     /**
@@ -44,8 +46,23 @@ public class ProjectRunner
         }
         else
         {
-            filer = new InputFileReader("SampleInput3_2023.csv");
+            filer = new InputFileReader("SampleInput1_2023.csv");
+        }
+
+        boolean showConsole = true;
+        boolean showGUI = false;
+
+        if (showConsole)
+        {
+            filer.printDataToConsole("traditional");
+            filer.printDataToConsole("reach");
+
+        }
+        if (showGUI)
+        {
+            // Should not be implemented till final submission
         }
     }
+
 
 }

@@ -2,8 +2,9 @@ package prj5;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * // -------------------------------------------------------------------------
@@ -23,6 +24,8 @@ public class InputFileReader
      */
     public static final int MONTH_TOKENS = 4;
     private SinglyLinkedList<Influencer> infData;
+    private static final String TRADITIONAL = "traditional";
+    private static final String REACH = "reach";
 
     /**
      * creates a new InputFileReader object
@@ -47,7 +50,7 @@ public class InputFileReader
      *            file to read through
      * @return returns a linked list of Influencers
      */
-    private SinglyLinkedList<Influencer> readFile(String fileName)
+    public SinglyLinkedList<Influencer> readFile(String fileName)
         throws ParseException,
         FileNotFoundException
     {
@@ -223,5 +226,141 @@ public class InputFileReader
             }
         }
         return count;
+    }
+
+
+    /**
+     * prints the output data to the console. Called by project runner
+     * 
+     * @param type
+     *            represents the type traditional and reach engagement metrics
+     */
+    public void printDataToConsole(String type)
+    {
+
+        DataProcessor dataProcessor = new DataProcessor(infData);
+        if (type.equals(TRADITIONAL))
+        {
+            dataProcessor.sortAlphabetically();
+            dataProcessor.printTraditionalEngagement();
+        }
+        else if (type.equals(REACH))
+        {
+            dataProcessor.sortByReachEngagement();
+            dataProcessor.printReachEngagement();
+        }
+    }
+
+    private static class DataProcessor
+    {
+        private SinglyLinkedList<Influencer> infData;
+        private DecimalFormat df;
+
+        public DataProcessor(SinglyLinkedList<Influencer> infData)
+        {
+            this.infData = infData;
+            this.df = new DecimalFormat("#.#");
+        }
+
+
+        private void printTraditionalEngagement()
+        {
+            for (int i = 0; i < infData.size(); i++)
+            {
+                Influencer influencer = infData.get(i);
+                System.out.println(influencer.getChannelName());
+                double rate = influencer.traditionalEngagementRate();
+                System.out.println("traditional: " + df.format(rate));
+                System.out.println("==========");
+            }
+            System.out.println("**********");
+            System.out.println("**********");
+        }
+
+
+        private void printReachEngagement()
+        {
+            List<Influencer> influencers = new ArrayList<>();
+
+            // put all influencers into a list
+            for (int i = 0; i < infData.size(); i++)
+            {
+                Influencer influencer = infData.get(i);
+                influencers.add(influencer);
+            }
+
+            // sort by engagement reach using sort method
+            influencers.sort((i1, i2) -> {
+                double rate1 = i1.reachEngagementRate();
+                double rate2 = i2.reachEngagementRate();
+                if (!Double.isInfinite(rate1) && !Double.isNaN(rate1))
+                {
+                    if (!Double.isInfinite(rate2) && !Double.isNaN(rate2))
+                    {
+                        // if both are valid sort normally
+                        return Double.compare(rate2, rate1);
+                    }
+                    // rate2 is N/A so its last
+                    return -1;
+                }
+                if (!Double.isInfinite(rate2) && !Double.isNaN(rate2))
+                {
+                    // rate1 is N/A so its last
+                    return 1;
+                }
+                // both rates are N/A so the order is normal
+                return 0;
+            });
+
+            // print list
+            for (Influencer influencer : influencers)
+            {
+                System.out.println(influencer.getChannelName());
+                double rate = influencer.reachEngagementRate();
+                if (!Double.isInfinite(rate) && !Double.isNaN(rate))
+                {
+                    System.out.println("reach: " + df.format(rate));
+                }
+                else
+                {
+                    System.out.println("reach: N/A");
+                }
+                System.out.println("==========");
+            }
+        }
+
+
+        /**
+         * sorts the channel names alphabetically
+         */
+        public void sortAlphabetically()
+        {
+            infData.sort(new Comparator<Influencer>() {
+                public
+                    int
+                    compare(Influencer influencer1, Influencer influencer2)
+                {
+                    return influencer1.getChannelName()
+                        .compareToIgnoreCase(influencer2.getChannelName());
+                }
+            });
+        }
+
+
+        /**
+         * sorts the reach engagement in descending order
+         */
+        public void sortByReachEngagement()
+        {
+            infData.sort(new Comparator<Influencer>() {
+                public int compare(Influencer inf1, Influencer inf2)
+                {
+                    double rate1 = inf1.reachEngagementRate();
+                    double rate2 = inf2.reachEngagementRate();
+                    return Double.compare(rate2, rate1);
+                }
+            });
+
+        }
     }
 }
