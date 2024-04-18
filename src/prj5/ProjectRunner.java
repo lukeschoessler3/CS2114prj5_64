@@ -1,6 +1,7 @@
 package prj5;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 
 // Virginia Tech Honor Code Pledge:
@@ -28,12 +29,10 @@ public class ProjectRunner
      * Place a description of your method here.
      * 
      * @param args
-     * @throws FileNotFoundException
-     * @throws ParseException
+     * @throws IOException
      */
     public static void main(String[] args)
-        throws FileNotFoundException,
-        ParseException
+        throws IOException
     {
 
         InputFileReader filer;

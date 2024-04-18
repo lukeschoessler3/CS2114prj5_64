@@ -1,10 +1,8 @@
 package prj5;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.util.*;
+import student.IOHelper;
 
 // Virginia Tech Honor Code Pledge:
 //
@@ -39,12 +37,9 @@ public class InputFileReader
      * 
      * @param fileName
      *            is the name of the file containing the influencer data
-     * @throws ParseException
-     * @throws FileNotFoundException
      */
     public InputFileReader(String fileName)
-        throws ParseException,
-        FileNotFoundException
+
     {
         infData = readFile(fileName);
 
@@ -63,14 +58,12 @@ public class InputFileReader
      * @return returns a linked list of Influencers
      */
     public SinglyLinkedList<Influencer> readFile(String fileName)
-        throws ParseException,
-        FileNotFoundException
+
     {
         SinglyLinkedList<Influencer> data = new SinglyLinkedList<>();
 
         // scanner
-        File file = new File(fileName);
-        Scanner scanner = new Scanner(file);
+        Scanner scanner = IOHelper.createScanner(fileName);
 
         boolean valid = true;
 

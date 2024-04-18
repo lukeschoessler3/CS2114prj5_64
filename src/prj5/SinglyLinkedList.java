@@ -460,9 +460,10 @@ public class SinglyLinkedList<E>
 
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * Sorts based on the comparator
      * 
      * @param c
+     *            the comparator
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public void sort(Comparator<? super E> c)
@@ -489,10 +490,12 @@ public class SinglyLinkedList<E>
 
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * Completes the insertion sort
      * 
      * @param insertNode
+     *            inserted node
      * @param c
+     *            comparator
      */
     public void insertInOrder(Node<E> insertNode, Comparator<? super E> c)
     {
@@ -527,6 +530,15 @@ public class SinglyLinkedList<E>
         }
     }
 
+    // -------------------------------------------------------------------------
+    /**
+     * Node class with all of the node methods
+     * 
+     * @param <D>
+     *            general tag
+     * @author Kean Jaldin Guzman
+     * @version Apr 18, 2024
+     */
     public static class Node<D>
     {
         // ~ Fields
@@ -536,6 +548,13 @@ public class SinglyLinkedList<E>
 
         // ~ Constructors
         // .......................................................
+        // ----------------------------------------------------------
+        /**
+         * Create a new Node object.
+         * 
+         * @param d
+         *            new data
+         */
         public Node(D d)
         {
             data = d;

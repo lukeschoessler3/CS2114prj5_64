@@ -39,30 +39,30 @@ public class SinglyLinkedListTest
 
         emptyList = new SinglyLinkedList<String>();
 
-        Month Jan1 = new Month("January", 1000, 100, 512, 100, 10);
-        Month Feb1 = new Month("February", 2000, 200, 842, 200, 30);
-        Month March1 = new Month("March", 2000, 200, 54, 200, 450);
-        Month Jan2 = new Month("January", 3000, 300, 7521, 300, 320);
-        Month Feb2 = new Month("February", 4000, 400, 9385, 400, 57);
-        Month March2 = new Month("March", 4000, 400, 32, 400, 243);
-        Month Jan3 = new Month("January", 5000, 500, 186, 500, 642);
-        Month Feb3 = new Month("February", 6000, 600, 4982, 600, 934);
-        Month March3 = new Month("March", 6000, 600, 4382, 600, 124);
+        Month jan1 = new Month("January", 1000, 100, 512, 100, 10);
+        Month feb1 = new Month("February", 2000, 200, 842, 200, 30);
+        Month march1 = new Month("March", 2000, 200, 54, 200, 450);
+        Month jan2 = new Month("January", 3000, 300, 7521, 300, 320);
+        Month feb2 = new Month("February", 4000, 400, 9385, 400, 57);
+        Month march2 = new Month("March", 4000, 400, 32, 400, 243);
+        Month jan3 = new Month("January", 5000, 500, 186, 500, 642);
+        Month feb3 = new Month("February", 6000, 600, 4982, 600, 934);
+        Month march3 = new Month("March", 6000, 600, 4382, 600, 124);
 
         Month[] monthArray1 = new Month[12];
-        monthArray1[0] = Jan1;
-        monthArray1[1] = Feb1;
-        monthArray1[2] = March1;
+        monthArray1[0] = jan1;
+        monthArray1[1] = feb1;
+        monthArray1[2] = march1;
 
         Month[] monthArray2 = new Month[12];
-        monthArray2[0] = Jan2;
-        monthArray2[1] = Feb2;
-        monthArray2[2] = March2;
+        monthArray2[0] = jan2;
+        monthArray2[1] = feb2;
+        monthArray2[2] = march2;
 
         Month[] monthArray3 = new Month[12];
-        monthArray3[0] = Jan3;
-        monthArray3[1] = Feb3;
-        monthArray3[2] = March3;
+        monthArray3[0] = jan3;
+        monthArray3[1] = feb3;
+        monthArray3[2] = march3;
 
         person = new Influencer("a", "football", "US", "Sports", monthArray1);
         person2 = new Influencer("b", "soccer", "US", "Sports", monthArray2);
