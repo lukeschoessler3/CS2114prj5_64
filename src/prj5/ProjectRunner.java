@@ -54,7 +54,8 @@ public class ProjectRunner
 
         if (showConsole)
         {
-            filer.printDataToConsole();
+            filer.printDataToConsole("traditional");
+            filer.printDataToConsole("reach");
 
         }
         if (showGUI)

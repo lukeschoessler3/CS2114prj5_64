@@ -231,8 +231,9 @@ public class InputFileReader
 
     /**
      * prints the output data to the console. Called by project runner
+     * @param type represents the type traditional and reach engagement metrics
      */
-    public void printInfData(String type)
+    public void printDataToConsole(String type)
     {
         DataProcessor dataProcessor = new DataProcessor(infData);
         if (type.equals(TRADITIONAL))
