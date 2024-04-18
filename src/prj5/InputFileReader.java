@@ -289,7 +289,7 @@ public class InputFileReader
                 influencers.add(influencer);
             }
 
-            // sort by engagement reach
+            // sort by engagement reach using sort method
             influencers.sort((i1, i2) -> {
                 double rate1 = i1.reachEngagementRate();
                 double rate2 = i2.reachEngagementRate();
