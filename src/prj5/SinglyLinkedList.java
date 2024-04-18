@@ -3,7 +3,7 @@
 // As a Hokie, I will conduct myself with honor and integrity at all times. I
 // will not lie, cheat, or steal, nor will I accept the actions of those who do.
 // -- Kean Jaldin Guzman (keanjg28)
-// -- Lucas Lombardi 
+// -- Lucas Lombardi
 package prj5;
 
 import java.util.Comparator;
@@ -456,60 +456,71 @@ public class SinglyLinkedList<E>
         return false;
     }
 
+
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
+     * 
      * @param c
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void sort(Comparator<? super E> c) {
+    public void sort(Comparator<? super E> c)
+    {
         // Make sure the list is NOT empty or/and does NOT have 1 element
-        if (head == null || head.next() == null) {
+        if (head == null || head.next() == null)
+        {
             return;
         }
-        
+
         // Break into sorted and unsorted chain
         Node unsorted = head.next();
         Node sorted = head;
         sorted.setNext(null);
-       
-        while (unsorted != null) {
+
+        while (unsorted != null)
+        {
             Node insertNode = unsorted;
             unsorted = unsorted.next();
             insertInOrder(insertNode, c);
         }
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
+     * 
      * @param insertNode
      * @param c
      */
-    public void insertInOrder(Node<E> insertNode, Comparator<? super E> c) {
+    public void insertInOrder(Node<E> insertNode, Comparator<? super E> c)
+    {
         E item = insertNode.getData();
-        
+
         // what head is this
-        Node<E> currentNode = head;        
-        Node<E> previousNode =  null;
-        
+        Node<E> currentNode = head;
+        Node<E> previousNode = null;
+
         // Locate where to insert
-        while ((currentNode != null) && 
-           (c.compare(currentNode.getData(), item) <= 0)) {
+        while ((currentNode != null)
+            && (c.compare(currentNode.getData(), item) <= 0))
+        {
             previousNode = currentNode;
             currentNode = currentNode.next();
         }
-            
+
         // Now try to make the insertion
-    
+
         // If more than 1 element
-        if (previousNode != null) {
+        if (previousNode != null)
+        {
             previousNode.setNext(insertNode);
             insertNode.setNext(currentNode);
         }
-        
+
         // If you have 1 element
-        else {
+        else
+        {
             insertNode.setNext(head);
             head = insertNode;
         }
