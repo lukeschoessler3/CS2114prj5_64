@@ -284,7 +284,6 @@ public class SinglyLinkedList<E>
         if (data == null)
         {
             // ... if so throw an exception
-            throw new IndexOutOfBoundsException("Index exceeds the size.");
         }
         return data;
     }
