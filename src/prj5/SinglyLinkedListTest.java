@@ -12,6 +12,10 @@ public class SinglyLinkedListTest extends student.TestCase
     //~ Fields ................................................................
     private SinglyLinkedList<String> list;
     private SinglyLinkedList<String> emptyList;
+    private SinglyLinkedList<Influencer> list2;
+    private Influencer person;
+    private Influencer person2;
+    private Influencer person3;
     
 
     //~ Constructors ..........................................................
@@ -27,6 +31,39 @@ public class SinglyLinkedListTest extends student.TestCase
         
         emptyList = new SinglyLinkedList<String>();
         
+        Month Jan1 = new Month("January", 1000, 100, 512, 100, 10);
+        Month Feb1 = new Month("February", 2000, 200, 842, 200, 30);
+        Month March1 = new Month("March", 2000, 200, 54, 200, 450);
+        Month Jan2 = new Month("January", 3000, 300, 7521, 300, 320);
+        Month Feb2 = new Month("February", 4000, 400, 9385, 400, 57);
+        Month March2 = new Month("March", 4000, 400, 32, 400, 243);
+        Month Jan3 = new Month("January", 5000, 500, 186, 500, 642);
+        Month Feb3 = new Month("February", 6000, 600, 4982, 600, 934);
+        Month March3 = new Month("March", 6000, 600, 4382, 600, 124);
+        
+        Month[] monthArray1 = new Month[12];
+        monthArray1[0] = Jan1;
+        monthArray1[1] = Feb1;
+        monthArray1[2] = March1;
+        
+        Month[] monthArray2 = new Month[12];
+        monthArray2[0] = Jan2;
+        monthArray2[1] = Feb2;
+        monthArray2[2] = March2;
+        
+        Month[] monthArray3 = new Month[12];
+        monthArray3[0] = Jan3;
+        monthArray3[1] = Feb3;
+        monthArray3[2] = March3;
+        
+        person = new Influencer("a", "football", "US", "Sports", monthArray1);
+        person2 = new Influencer("b", "soccer", "US", "Sports", monthArray2);
+        person3 = new Influencer("c", "Baseball", "US", "Sports", monthArray3);
+        
+        list2 = new SinglyLinkedList<Influencer>();
+        list2.add(person);
+        list2.add(person3);
+        list2.add(person2); 
         
     }
     //~Public  Methods ........................................................
@@ -294,5 +331,33 @@ public class SinglyLinkedListTest extends student.TestCase
         sameElts.add("mango");
         sameElts.add("kiwi");
         assertTrue(list.equals(sameElts));
+    }
+    
+    /**
+     * tests sort()
+     * list2 is NOT sorted
+     */
+    public void testSort() {
+        Object[] unsortedArray = list2.toArray();
+        assertEquals(person3, unsortedArray[1]);
+        CompareByChannelName c = new CompareByChannelName();
+        list2.sort(c);
+        assertEquals(person2, unsortedArray[2]);
+        
+        SinglyLinkedList<Influencer> emptyList1 = 
+            new SinglyLinkedList<Influencer>();
+        emptyList1.sort(c);
+    }
+    
+    /**
+     * tests sort() with CompareReachWithEngagementRate
+     */
+    public void testSort2() {
+        Object[] unsortedArray = list2.toArray();
+        assertEquals(person, unsortedArray[0]);
+        CompareReachEngagementRate c = new CompareReachEngagementRate();
+        list2.sort(c);
+        Object[] sortedArray = list2.toArray();
+        assertEquals(person2, sortedArray[0]);
     }
 }
