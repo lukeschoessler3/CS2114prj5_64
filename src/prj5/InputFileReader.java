@@ -244,12 +244,15 @@ public class InputFileReader
     {
         if (type.equals(TRADITIONAL))
         {
-            sortAlphabetically();
+            CompareByChannelName compare = new CompareByChannelName();
+            infData.sort(compare);
+            
             printTraditionalEngagement();
         }
         else if (type.equals(REACH))
         {
-            sortByReachEngagement();
+            CompareReachEngagementRate compareReach = new CompareReachEngagementRate();
+            infData.sort(compareReach);
             printReachEngagement();
         }
     }
@@ -323,34 +326,35 @@ public class InputFileReader
     }
 
 
-    /**
-     * sorts the channel names alphabetically
-     */
-    private void sortAlphabetically()
-    {
-        infData.sort(new Comparator<Influencer>() {
-            public int compare(Influencer influencer1, Influencer influencer2)
-            {
-                return influencer1.getChannelName()
-                    .compareToIgnoreCase(influencer2.getChannelName());
-            }
-        });
-    }
-
-
-    /**
-     * sorts the reach engagement in descending order
-     */
-    private void sortByReachEngagement()
-    {
-        infData.sort(new Comparator<Influencer>() {
-            public int compare(Influencer inf1, Influencer inf2)
-            {
-                double rate1 = inf1.reachEngagementRate();
-                double rate2 = inf2.reachEngagementRate();
-                return Double.compare(rate2, rate1);
-            }
-        });
-
-    }
+//    /**
+//     * sorts the channel names alphabetically
+//     */
+//    private void sortAlphabetically()
+//    {
+//        infData.sort(new Comparator<Influencer>() {
+//            public int compare(Influencer influencer1, Influencer influencer2)
+//            {
+//                return influencer1.getChannelName()
+//                    .compareToIgnoreCase(influencer2.getChannelName());
+//            }
+//        });
+//    }
+//
+//
+//    /**
+//     * sorts the reach engagement in descending order
+//     */
+//    
+//    private void sortByReachEngagement()
+//    {
+//        infData.sort(new Comparator<Influencer>() {
+//            public int compare(Influencer inf1, Influencer inf2)
+//            {
+//                double rate1 = inf1.reachEngagementRate();
+//                double rate2 = inf2.reachEngagementRate();
+//                return Double.compare(rate2, rate1);
+//            }
+//        });
+//
+//    }
 }
