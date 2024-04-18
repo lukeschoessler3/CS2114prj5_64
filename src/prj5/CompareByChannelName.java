@@ -36,6 +36,7 @@ public class CompareByChannelName
      */
     public int compare(Influencer left, Influencer right)
     {
-        return left.getChannelName().compareToIgnoreCase(right.getChannelName());
+        return left.getChannelName()
+            .compareToIgnoreCase(right.getChannelName());
     }
 }
