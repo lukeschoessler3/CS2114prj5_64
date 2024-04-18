@@ -40,12 +40,18 @@ public class InputFileReader
     }
 
 
+    /**
+     * Reads through the file
+     * 
+     * @param fileName
+     *            file to read through
+     * @return returns a linked list of Influencers
+     */
     private SinglyLinkedList<Influencer> readFile(String fileName)
         throws ParseException,
         FileNotFoundException
     {
-        infData = new SinglyLinkedList<>();
-        // influencerWindow = new GUIInfluencerWindow();
+        SinglyLinkedList<Influencer> data = new SinglyLinkedList<>();
 
         // scanner
         File file = new File(fileName);
@@ -53,37 +59,44 @@ public class InputFileReader
 
         // skip header
         scanner.nextLine();
-        int infCount = 0;
+
         int maxInf = 4;
+        int infCount = 0;
 
         while (scanner.hasNextLine())
         {
-            String line = scanner.nextLine();
-            String[] values = line.split(",");
 
-            String monthName = values[0];
-            String username = values[1];
-            String channel = values[2];
-            String country = values[3];
-            String mainTopic = values[4];
-            int likes = toInt(values[5]);
-            int posts = toInt(values[6]);
-            int followers = toInt(values[7]);
-            int comments = toInt(values[8]);
-            int views = toInt(values[9]);
-
-            Month newMonth =
-                new Month(monthName, likes, comments, views, posts, followers);
-
-            if (!isValidMonth(newMonth))
-            {
-                continue;
-            }
+// if (!isValidMonth(newMonth))
+// {
+// scanner.nextLine();
+// }
 
             Influencer influencer;
             for (int i = 0; i < maxInf; i++)
             {
-                if (infCount == 0 || infData.get(i).getUsername() != username)
+                String line = scanner.nextLine();
+                String[] values = line.split(",");
+
+                String monthName = values[0];
+                String username = values[1];
+                String channel = values[2];
+                String country = values[3];
+                String mainTopic = values[4];
+                int likes = toInt(values[5]);
+                int posts = toInt(values[6]);
+                int followers = toInt(values[7]);
+                int comments = toInt(values[8]);
+                int views = toInt(values[9]);
+
+                Month newMonth = new Month(
+                    monthName,
+                    likes,
+                    comments,
+                    views,
+                    posts,
+                    followers);
+
+                if (infCount == 0)
                 {
                     Month[] monthArray = new Month[12];
                     monthArray[0] = newMonth;
@@ -93,30 +106,53 @@ public class InputFileReader
                         country,
                         mainTopic,
                         monthArray);
-                    infData.add(influencer);
+                    data.add(influencer);
                     infCount++;
+
+                }
+                else if (!data.get(i - 1).getUsername().equals(username))
+                {
+                    Month[] monthArray = new Month[12];
+                    monthArray[0] = newMonth;
+                    influencer = new Influencer(
+                        username,
+                        channel,
+                        country,
+                        mainTopic,
+                        monthArray);
+                    data.add(influencer);
+                    infCount++;
+
                 }
                 else
                 {
                     for (int j = 0; j < infCount; j++)
                     {
-                        if (username == infData.get(j).getUsername())
+                        if (username.equals(data.get(j).getUsername()))
                         {
-                            infData.get(j).getMonthArray()[getItemsInArray(
-                                infData.get(j).getMonthArray())] = newMonth;
+                            data.get(j).getMonthArray()[getItemsInArray(
+                                data.get(j).getMonthArray())] = newMonth;
+
                         }
 
                     }
 
                 }
             }
-            scanner.close();
 
         }
-        return infData;
+        scanner.close();
+        return data;
     }
 
 
+    /**
+     * Converts a string to an integer
+     * 
+     * @param str
+     *            string to convert
+     * @return returns the integer value or 0
+     */
     private int toInt(String str)
     {
         try
