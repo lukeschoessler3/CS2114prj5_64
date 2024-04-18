@@ -450,13 +450,23 @@ public class SinglyLinkedList<E>
         return false;
     }
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param c
+     */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public void sort(Comparator<? super E> c) {
+        // Make sure the list is NOT empty or/and does NOT have 1 element
+        if (head == null || head.next() == null) {
+            return;
+        }
+        
         // Break into sorted and unsorted chain
         Node unsorted = head.next();
         Node sorted = head;
         sorted.setNext(null);
-        
+       
         while (unsorted != null) {
             Node insertNode = unsorted;
             unsorted = unsorted.next();
@@ -475,21 +485,28 @@ public class SinglyLinkedList<E>
         
         // what head is this
         Node<E> currentNode = head;        
-        Node<E> stepNode =  head.next();
+        Node<E> previousNode =  null;
         
-        // Edge case if only one node in the sorted list
-        if (stepNode == null) {
-            currentNode.setNext(insertNode);
-        }
-        
-        while ((stepNode != null) && 
-           (c.compare(stepNode.getData(), item) >= 0)) {
+        // Locate where to insert
+        while ((currentNode != null) && 
+           (c.compare(currentNode.getData(), item) >= 0)) {
+            previousNode = currentNode;
             currentNode = currentNode.next();
-            stepNode = stepNode.next();
         }
             
-        insertNode.setNext(stepNode);
-        currentNode.setNext(insertNode);  
+        // Now try to make the insertion
+    
+        // If more than 1 element
+        if (previousNode != null) {
+            previousNode.setNext(insertNode);
+            insertNode.setNext(currentNode);
+        }
+        
+        // If you have 1 element
+        else {
+            insertNode.setNext(head);
+            head = insertNode;
+        }
     }
 
     public static class Node<D>
