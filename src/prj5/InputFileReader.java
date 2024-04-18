@@ -17,7 +17,7 @@ import java.util.*;
  * // -------------------------------------------------------------------------
  * /** Parses through the input data from the text file.
  * 
- * @author jacks
+ * @author Jackson Bauer
  * @version Apr 15, 2024
  */
 public class InputFileReader
