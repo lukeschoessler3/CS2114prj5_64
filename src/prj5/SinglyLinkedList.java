@@ -291,6 +291,7 @@ public class SinglyLinkedList<E>
         if (data == null)
         {
             // ... if so throw an exception
+            throw new IndexOutOfBoundsException();
         }
         return data;
     }
