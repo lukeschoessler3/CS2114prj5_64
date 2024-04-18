@@ -1,3 +1,9 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times. I
+// will not lie, cheat, or steal, nor will I accept the actions of those who do.
+// -- Kean Jaldin Guzman (keanjg28)
+// -- Lucas Lombardi 
 package prj5;
 
 // -------------------------------------------------------------------------
@@ -5,6 +11,7 @@ package prj5;
  *  Test class for SinglyLinkedList
  * 
  *  @author Kean Jaldin Guzman (keanjg28)
+ *  @author Lucas Lombardi 
  *  @version Apr 17, 2024
  */
 public class SinglyLinkedListTest extends student.TestCase
