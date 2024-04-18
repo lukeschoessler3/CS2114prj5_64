@@ -46,7 +46,7 @@ public class ProjectRunner
         }
         else
         {
-            filer = new InputFileReader("SampleInput1_2023.csv");
+            filer = new InputFileReader("SampleInput3_2023.csv");
         }
 
         boolean showConsole = true;

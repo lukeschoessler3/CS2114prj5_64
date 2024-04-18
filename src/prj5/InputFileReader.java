@@ -40,6 +40,11 @@ public class InputFileReader
         FileNotFoundException
     {
         infData = readFile(fileName);
+
+        infData.get(0).sortMonths();
+        infData.get(1).sortMonths();
+        infData.get(2).sortMonths();
+        infData.get(3).sortMonths();
     }
 
 

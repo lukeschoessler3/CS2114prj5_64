@@ -143,6 +143,7 @@ public class Month
      */
     public int getMonthIndex()
     {
+
         if (this.getMonthName().equals("January"))
         {
             return 0;
@@ -220,7 +221,7 @@ public class Month
         public int compare(Month month, Month otherMonth)
         {
 
-            if (month.getMonthIndex() == -1 || otherMonth.getMonthIndex() == -1)
+            if (month == null || otherMonth == null)
             {
                 return 100;
             }
