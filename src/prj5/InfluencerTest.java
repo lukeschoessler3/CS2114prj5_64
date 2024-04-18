@@ -154,6 +154,14 @@ public class InfluencerTest
             new Influencer("Sidemen", "sidemen", "England", "IRL", months2);
 
         assertNull(inf2.getFirstQuarter());
+        
+        Month[] months3 = new Month[12];
+        months[0] = jan;
+        Influencer inf3 = 
+            new Influencer("Alpha", "alpha", "CZ", "Sports", months3);
+        
+        assertNull(inf3.getFirstQuarter());
+        
     }
 
 
