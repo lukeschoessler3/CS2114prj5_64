@@ -60,6 +60,8 @@ public class InputFileReader
         File file = new File(fileName);
         Scanner scanner = new Scanner(file);
 
+        boolean valid = true;
+
         // skip header
         scanner.nextLine();
 
@@ -69,18 +71,27 @@ public class InputFileReader
         while (scanner.hasNextLine())
         {
 
-// if (!isValidMonth(newMonth))
-// {
-// scanner.nextLine();
-// }
-
             Influencer influencer;
             for (int i = 0; i < maxInf; i++)
             {
+                if (!scanner.hasNextLine())
+                {
+                    scanner.close();
+                    return data;
+                }
+
                 String line = scanner.nextLine();
                 String[] values = line.split(",");
+                valid = true;
 
                 String monthName = values[0];
+
+                if (!isValidMonth(monthName))
+                {
+                    scanner.nextLine();
+                }
+
+                monthName = values[0];
                 String username = values[1];
                 String channel = values[2];
                 String country = values[3];
@@ -113,31 +124,32 @@ public class InputFileReader
                     infCount++;
 
                 }
-                else if (!data.get(i - 1).getUsername().equals(username))
-                {
-                    Month[] monthArray = new Month[12];
-                    monthArray[0] = newMonth;
-                    influencer = new Influencer(
-                        username,
-                        channel,
-                        country,
-                        mainTopic,
-                        monthArray);
-                    data.add(influencer);
-                    infCount++;
 
-                }
                 else
                 {
                     for (int j = 0; j < infCount; j++)
                     {
                         if (username.equals(data.get(j).getUsername()))
                         {
+                            valid = false;
                             data.get(j).getMonthArray()[getItemsInArray(
                                 data.get(j).getMonthArray())] = newMonth;
 
                         }
 
+                    }
+                    if (valid)
+                    {
+                        Month[] monthArray = new Month[12];
+                        monthArray[0] = newMonth;
+                        influencer = new Influencer(
+                            username,
+                            channel,
+                            country,
+                            mainTopic,
+                            monthArray);
+                        data.add(influencer);
+                        infCount++;
                     }
 
                 }
@@ -172,13 +184,25 @@ public class InputFileReader
     /**
      * checks if a month is valid
      * 
-     * @param month
+     * @param monthName
      *            is the month we are checking
      * @return if its valid
      */
-    public boolean isValidMonth(Month month)
+    public boolean isValidMonth(String monthName)
     {
-        return (month.getMonthIndex() != -1);
+        String[] validMonthNames =
+            { "January", "February", "March", "April", "May", "June", "July",
+                "August", "September", "October", "November", "December" };
+
+        for (int i = 0; i < validMonthNames.length; i++)
+        {
+            if (monthName.equals(validMonthNames[i]))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 
@@ -191,13 +215,17 @@ public class InputFileReader
      */
     private int getItemsInArray(Month[] array)
     {
-        int i = 0;
 
-        while (array[i] != null)
+        int count = 0;
+
+        for (int i = 0; i < array.length; i++)
         {
-            i++;
+            if (array[i] != null)
+            {
+                count++;
+            }
         }
-        return i;
+        return count;
     }
 
 
