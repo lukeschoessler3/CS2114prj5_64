@@ -4,10 +4,9 @@ import java.util.Comparator;
 
 // -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here. Follow it with additional
- * details about its purpose, what abstraction it represents, and how to use it.
+ * Compares the traditional engagement rates of two influencer's
  * 
- * @author lasch
+ * @author Luke Schoessler
  * @version Apr 22, 2024
  */
 public class CompareTraditionalEngagementRate
