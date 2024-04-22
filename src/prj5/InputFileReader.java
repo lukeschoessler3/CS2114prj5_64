@@ -251,8 +251,8 @@ public class InputFileReader
         }
         else if (type.equals(REACH))
         {
-            CompareReachEngagementRate compareReach =
-                new CompareReachEngagementRate();
+            CompareQuarterReachEngagementRate compareReach =
+                new CompareQuarterReachEngagementRate();
             infData.sort(compareReach);
             printReachEngagement();
         }

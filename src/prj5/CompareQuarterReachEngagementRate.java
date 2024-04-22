@@ -19,7 +19,7 @@ import java.util.Comparator;
  * @version Apr 17, 2024
  */
 
-public class CompareReachEngagementRate
+public class CompareQuarterReachEngagementRate
     implements Comparator<Influencer>
 {
 

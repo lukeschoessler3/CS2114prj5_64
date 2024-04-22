@@ -231,9 +231,38 @@ public class Influencer
 
     // ----------------------------------------------------------
     /**
-     * Calculate the reach engagement rate
+     * Calculates the traditional engagement rate for a month
      * 
-     * @return returns the reach engagement rate
+     * @param monthName
+     *            name of month to be calculated
+     * @return returns the traditional engagement rate for a month
+     */
+    public double monthTraditionalEngagementRate(String monthName)
+    {
+
+        Month month = this.getMonth(monthName);
+
+        // Check that the first quarter is not null and if so return 0
+        if (month == null)
+        {
+            return 0;
+        }
+
+        double sumComments = month.getComments();
+        double sumLikes = month.getLikes();
+        double sumFollowers = month.getFollowers();
+        double engagementRate = 0;
+
+        engagementRate = ((sumComments + sumLikes) / sumFollowers) * 100;
+        return engagementRate;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Calculate the reach engagement rate for the first quarter
+     * 
+     * @return returns the reach engagement rate for the first quarter
      */
     public double reachEngagementRate()
     {
@@ -256,6 +285,35 @@ public class Influencer
             sumLikes += firstQuarter[i].getLikes();
             sumViews += firstQuarter[i].getViews();
         }
+
+        engagementRate = ((sumComments + sumLikes) / sumViews) * 100;
+        return engagementRate;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Calculates the reach engagement rate for a month
+     * 
+     * @param monthName
+     *            name of month to be calculated
+     * @return returns the reach engagement rate for a month
+     */
+    public double monthReachEngagementRate(String monthName)
+    {
+
+        Month month = this.getMonth(monthName);
+
+        // Check that the first quarter is not null and if so return 0
+        if (month == null)
+        {
+            return 0;
+        }
+
+        double sumComments = month.getComments();
+        double sumLikes = month.getLikes();
+        double sumViews = month.getViews();
+        double engagementRate = 0;
 
         engagementRate = ((sumComments + sumLikes) / sumViews) * 100;
         return engagementRate;

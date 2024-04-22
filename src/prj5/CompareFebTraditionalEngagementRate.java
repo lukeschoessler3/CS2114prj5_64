@@ -4,18 +4,18 @@ import java.util.Comparator;
 
 // -------------------------------------------------------------------------
 /**
- * Compares the traditional engagement rates of two influencer's
+ * Compares the February traditional engagement rates
  * 
  * @author Luke Schoessler
  * @version Apr 22, 2024
  */
-public class CompareTraditionalEngagementRate
+public class CompareFebTraditionalEngagementRate
     implements Comparator<Influencer>
 {
 
 // ----------------------------------------------------------
     /**
-     * Compare two influencer's traditional engagement rates (ints)
+     * Compare two influencer's february traditional engagement rates (ints)
      * 
      * @param left
      *            the left-side to compare
@@ -29,8 +29,10 @@ public class CompareTraditionalEngagementRate
      */
     public int compare(Influencer left, Influencer right)
     {
+        String monthName = "February";
+
         return Double.compare(
-            left.traditionalEngagementRate(),
-            right.traditionalEngagementRate());
+            left.monthTraditionalEngagementRate(monthName),
+            right.monthTraditionalEngagementRate(monthName));
     }
 }

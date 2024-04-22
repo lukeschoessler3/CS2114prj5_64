@@ -387,7 +387,8 @@ public class SinglyLinkedListTest
     {
         Object[] unsortedArray = list2.toArray();
         assertEquals(person, unsortedArray[0]);
-        CompareReachEngagementRate c = new CompareReachEngagementRate();
+        CompareQuarterReachEngagementRate c =
+            new CompareQuarterReachEngagementRate();
         list2.sort(c);
         Object[] sortedArray = list2.toArray();
         assertEquals(person2, sortedArray[0]);
