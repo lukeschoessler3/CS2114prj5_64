@@ -254,6 +254,8 @@ public class GUIInfluencerWindow
                     new CompareQuarterTraditionalEngagementRate();
 
                 infData.sort(comparator);
+
+                update();
             }
 
             else if (monthString.equals("January"))
@@ -271,6 +273,8 @@ public class GUIInfluencerWindow
                     new CompareFebTraditionalEngagementRate();
 
                 infData.sort(comparator);
+
+                update();
             }
             else if (monthString.equals("March"))
             {
@@ -278,6 +282,8 @@ public class GUIInfluencerWindow
                     new CompareMarTraditionalEngagementRate();
 
                 infData.sort(comparator);
+
+                update();
             }
 
         }
@@ -289,6 +295,8 @@ public class GUIInfluencerWindow
                     new CompareQuarterReachEngagementRate();
 
                 infData.sort(comparator);
+
+                update();
             }
 
             else if (monthString.equals("January"))
@@ -297,6 +305,8 @@ public class GUIInfluencerWindow
                     new CompareJanReachEngagementRate();
 
                 infData.sort(comparator);
+
+                update();
             }
             else if (monthString.equals("February"))
             {
@@ -304,6 +314,8 @@ public class GUIInfluencerWindow
                     new CompareFebReachEngagementRate();
 
                 infData.sort(comparator);
+
+                update();
             }
             else if (monthString.equals("March"))
             {
@@ -311,6 +323,8 @@ public class GUIInfluencerWindow
                     new CompareMarReachEngagementRate();
 
                 infData.sort(comparator);
+
+                update();
             }
         }
     }
