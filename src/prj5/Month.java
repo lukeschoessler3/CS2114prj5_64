@@ -144,6 +144,10 @@ public class Month
     public int getMonthIndex()
     {
 
+        // All months are always ordered Jan-Dec in an
+        // 11 sized array. This makes it easy to sort
+        // through the array as the months are always
+        // in the same order.
         if (this.getMonthName().equals("January"))
         {
             return 0;
@@ -220,7 +224,9 @@ public class Month
          */
         public int compare(Month month, Month otherMonth)
         {
-
+            
+            // Just return a large value that will provide the
+            // comparator with the respected return value
             if (month == null || otherMonth == null)
             {
                 return 100;
