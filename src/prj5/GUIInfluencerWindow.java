@@ -319,6 +319,8 @@ public class GUIInfluencerWindow
         engagementTypeString = "Traditional Engagement Rate";
 
         engagementText.setText(engagementTypeString);
+        
+        
     }
 
 
