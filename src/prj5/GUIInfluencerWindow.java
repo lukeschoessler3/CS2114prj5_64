@@ -2,6 +2,8 @@ package prj5;
 
 import cs2.*;
 
+import java.awt.Color;
+
 // -------------------------------------------------------------------------
 /**
  * Write a one-sentence summary of your class here. Follow it with additional
@@ -30,6 +32,13 @@ public class GUIInfluencerWindow
     private TextShape sortText;
     // Text shape for the engagement type if sorting by engagement
     private TextShape engagementText;
+
+    // Create bar shapes
+    private Shape bar1;
+    private Shape bar2;
+    private Shape bar3;
+    private Shape bar4;
+
     // Size of window
     private int dataWindowHeight;
     private int dataWindowWidth;
@@ -75,6 +84,16 @@ public class GUIInfluencerWindow
 
         sortText = new TextShape(10, 50, "");
         window.addShape(sortText);
+
+        bar1 = new Shape(180, 530, 40, 0, Color.BLUE);
+        bar2 = new Shape(380, 530, 40, 0, Color.RED);
+        bar2 = new Shape(580, 530, 40, 0, Color.GREEN);
+        bar3 = new Shape(680, 530, 40, 0, Color.ORANGE);
+
+        window.addShape(bar1);
+        window.addShape(bar2);
+        window.addShape(bar3);
+        window.addShape(bar4);
 
         sortChannelName = new Button("Sort by Channel Name");
         sortChannelName.onClick(this, "clickedSortChannel");
@@ -320,6 +339,16 @@ public class GUIInfluencerWindow
         engagementTypeString = "Reach Engagement Rate";
 
         engagementText.setText(engagementTypeString);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Updates the graphs
+     */
+    public void update()
+    {
+
     }
 
 }
