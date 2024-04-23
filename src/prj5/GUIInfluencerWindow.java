@@ -344,44 +344,178 @@ public class GUIInfluencerWindow
      */
     public void update()
     {
-        if (sortMethodString.equals("Reach Engagement Rate"))
+        if (engagementTypeString.equals("Traditional Engagement Rate"))
         {
-            int rate1 =
-                (int)infData.get(0).reachEngagementRate() * BAR_SIZE_MULTIPLIER;
-            int rate2 =
-                (int)infData.get(1).reachEngagementRate() * BAR_SIZE_MULTIPLIER;
-            int rate3 =
-                (int)infData.get(2).reachEngagementRate() * BAR_SIZE_MULTIPLIER;
-            int rate4 =
-                (int)infData.get(3).reachEngagementRate() * BAR_SIZE_MULTIPLIER;
+            if (monthString.equals("First Quarter (Jan-March)"))
+            {
+                int rate1 = (int)infData.get(0).traditionalEngagementRate()
+                    * BAR_SIZE_MULTIPLIER;
+                int rate2 = (int)infData.get(1).traditionalEngagementRate()
+                    * BAR_SIZE_MULTIPLIER;
+                int rate3 = (int)infData.get(2).traditionalEngagementRate()
+                    * BAR_SIZE_MULTIPLIER;
+                int rate4 = (int)infData.get(3).traditionalEngagementRate()
+                    * BAR_SIZE_MULTIPLIER;
 
-            bar1 = new Shape(
-                bar1.getX(),
-                bar1.getY(),
-                bar1.getWidth(),
-                rate1,
-                Color.BLUE);
+                bar1 = new Shape(
+                    bar1.getX(),
+                    bar1.getY(),
+                    bar1.getWidth(),
+                    rate1,
+                    Color.BLUE);
 
-            bar2 = new Shape(
-                bar2.getX(),
-                bar2.getY(),
-                bar2.getWidth(),
-                rate2,
-                Color.RED);
+                bar2 = new Shape(
+                    bar2.getX(),
+                    bar2.getY(),
+                    bar2.getWidth(),
+                    rate2,
+                    Color.RED);
 
-            bar3 = new Shape(
-                bar3.getX(),
-                bar3.getY(),
-                bar3.getWidth(),
-                rate3,
-                Color.GREEN);
+                bar3 = new Shape(
+                    bar3.getX(),
+                    bar3.getY(),
+                    bar3.getWidth(),
+                    rate3,
+                    Color.GREEN);
 
-            bar4 = new Shape(
-                bar4.getX(),
-                bar4.getY(),
-                bar4.getWidth(),
-                rate4,
-                Color.ORANGE);
+                bar4 = new Shape(
+                    bar4.getX(),
+                    bar4.getY(),
+                    bar4.getWidth(),
+                    rate4,
+                    Color.ORANGE);
+            }
+
+            else if (monthString.equals("January"))
+            {
+                int rate1 = (int)infData.get(0)
+                    .monthTraditionalEngagementRate("January")
+                    * BAR_SIZE_MULTIPLIER;
+                int rate2 = (int)infData.get(1)
+                    .monthTraditionalEngagementRate("January")
+                    * BAR_SIZE_MULTIPLIER;
+                int rate3 = (int)infData.get(2)
+                    .monthTraditionalEngagementRate("January")
+                    * BAR_SIZE_MULTIPLIER;
+                int rate4 = (int)infData.get(3)
+                    .monthTraditionalEngagementRate("January")
+                    * BAR_SIZE_MULTIPLIER;
+
+                bar1 = new Shape(
+                    bar1.getX(),
+                    bar1.getY(),
+                    bar1.getWidth(),
+                    rate1,
+                    Color.BLUE);
+
+                bar2 = new Shape(
+                    bar2.getX(),
+                    bar2.getY(),
+                    bar2.getWidth(),
+                    rate2,
+                    Color.RED);
+
+                bar3 = new Shape(
+                    bar3.getX(),
+                    bar3.getY(),
+                    bar3.getWidth(),
+                    rate3,
+                    Color.GREEN);
+
+                bar4 = new Shape(
+                    bar4.getX(),
+                    bar4.getY(),
+                    bar4.getWidth(),
+                    rate4,
+                    Color.ORANGE);
+            }
+            else if (monthString.equals("February"))
+            {
+                int rate1 = (int)infData.get(0)
+                    .monthTraditionalEngagementRate("February")
+                    * BAR_SIZE_MULTIPLIER;
+                int rate2 = (int)infData.get(1)
+                    .monthTraditionalEngagementRate("February")
+                    * BAR_SIZE_MULTIPLIER;
+                int rate3 = (int)infData.get(2)
+                    .monthTraditionalEngagementRate("February")
+                    * BAR_SIZE_MULTIPLIER;
+                int rate4 = (int)infData.get(3)
+                    .monthTraditionalEngagementRate("February")
+                    * BAR_SIZE_MULTIPLIER;
+
+                bar1 = new Shape(
+                    bar1.getX(),
+                    bar1.getY(),
+                    bar1.getWidth(),
+                    rate1,
+                    Color.BLUE);
+
+                bar2 = new Shape(
+                    bar2.getX(),
+                    bar2.getY(),
+                    bar2.getWidth(),
+                    rate2,
+                    Color.RED);
+
+                bar3 = new Shape(
+                    bar3.getX(),
+                    bar3.getY(),
+                    bar3.getWidth(),
+                    rate3,
+                    Color.GREEN);
+
+                bar4 = new Shape(
+                    bar4.getX(),
+                    bar4.getY(),
+                    bar4.getWidth(),
+                    rate4,
+                    Color.ORANGE);
+            }
+            else if (monthString.equals("March"))
+            {
+                int rate1 =
+                    (int)infData.get(0).monthTraditionalEngagementRate("March")
+                        * BAR_SIZE_MULTIPLIER;
+                int rate2 =
+                    (int)infData.get(1).monthTraditionalEngagementRate("March")
+                        * BAR_SIZE_MULTIPLIER;
+                int rate3 =
+                    (int)infData.get(2).monthTraditionalEngagementRate("March")
+                        * BAR_SIZE_MULTIPLIER;
+                int rate4 =
+                    (int)infData.get(3).monthTraditionalEngagementRate("March")
+                        * BAR_SIZE_MULTIPLIER;
+
+                bar1 = new Shape(
+                    bar1.getX(),
+                    bar1.getY(),
+                    bar1.getWidth(),
+                    rate1,
+                    Color.BLUE);
+
+                bar2 = new Shape(
+                    bar2.getX(),
+                    bar2.getY(),
+                    bar2.getWidth(),
+                    rate2,
+                    Color.RED);
+
+                bar3 = new Shape(
+                    bar3.getX(),
+                    bar3.getY(),
+                    bar3.getWidth(),
+                    rate3,
+                    Color.GREEN);
+
+                bar4 = new Shape(
+                    bar4.getX(),
+                    bar4.getY(),
+                    bar4.getWidth(),
+                    rate4,
+                    Color.ORANGE);
+            }
+
         }
 
     }
