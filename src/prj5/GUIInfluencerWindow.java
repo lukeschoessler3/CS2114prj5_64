@@ -319,8 +319,7 @@ public class GUIInfluencerWindow
         engagementTypeString = "Traditional Engagement Rate";
 
         engagementText.setText(engagementTypeString);
-        
-        
+
     }
 
 
@@ -368,21 +367,21 @@ public class GUIInfluencerWindow
                 bar2.getY(),
                 bar2.getWidth(),
                 rate2,
-                Color.BLUE);
+                Color.RED);
 
             bar3 = new Shape(
                 bar3.getX(),
                 bar3.getY(),
                 bar3.getWidth(),
                 rate3,
-                Color.BLUE);
+                Color.GREEN);
 
             bar4 = new Shape(
                 bar4.getX(),
                 bar4.getY(),
                 bar4.getWidth(),
                 rate4,
-                Color.BLUE);
+                Color.ORANGE);
         }
 
     }
