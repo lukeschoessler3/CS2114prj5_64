@@ -146,13 +146,16 @@ public class Influencer
      */
     public Month getMonth(String nameOfMonth)
     {
+        // Month arrays will ALWAYS have a size of 12
+        // (jan - dec)
         for (int i = 0; i < ARRAY_LENGTH; i++)
         {
             if (monthArray[i] == null)
             {
                 i += 0;
             }
-
+            
+            // Month equals
             else if (monthArray[i].getMonthName().equals(nameOfMonth))
             {
                 return monthArray[i];
@@ -223,6 +226,7 @@ public class Influencer
             sumLikes += firstQuarter[i].getLikes();
         }
 
+        // Traditional Engagement Rate Formula
         engagementRate =
             ((sumComments + sumLikes) / firstQuarter[2].getFollowers()) * 100;
         return engagementRate;
@@ -252,7 +256,8 @@ public class Influencer
         double sumLikes = month.getLikes();
         double sumFollowers = month.getFollowers();
         double engagementRate = 0;
-
+        
+        // Traditional Engagement Rate Formula
         engagementRate = ((sumComments + sumLikes) / sumFollowers) * 100;
         return engagementRate;
     }
@@ -315,6 +320,7 @@ public class Influencer
         double sumViews = month.getViews();
         double engagementRate = 0;
 
+        // Reach Engagement Rate Formula
         engagementRate = ((sumComments + sumLikes) / sumViews) * 100;
         return engagementRate;
     }
@@ -328,6 +334,7 @@ public class Influencer
      */
     public void sortMonths()
     {
+        // Compare's months by their lexile values
         MonthNameComparator comparator = new MonthNameComparator();
 
         Arrays.sort(monthArray, comparator);
