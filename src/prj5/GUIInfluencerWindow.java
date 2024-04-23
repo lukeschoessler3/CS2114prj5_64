@@ -57,7 +57,7 @@ public class GUIInfluencerWindow
      * Value to calculate bar size; This number will be multiplied by engagement
      * rates; Can be capped if the number goes off screen
      */
-    public static final int BAR_SIZE_MULTIPLIER = 20;
+    public static final int BAR_SIZE_MULTIPLIER = 10;
 
     // ~ Constructors ..........................................................
 
@@ -91,8 +91,8 @@ public class GUIInfluencerWindow
 
         bar1 = new Shape(180, 530, 40, 0, Color.BLUE);
         bar2 = new Shape(380, 530, 40, 0, Color.RED);
-        bar2 = new Shape(580, 530, 40, 0, Color.GREEN);
-        bar3 = new Shape(680, 530, 40, 0, Color.ORANGE);
+        bar3 = new Shape(580, 530, 40, 0, Color.GREEN);
+        bar4 = new Shape(680, 530, 40, 0, Color.ORANGE);
 
         window.addShape(bar1);
         window.addShape(bar2);
@@ -262,6 +262,8 @@ public class GUIInfluencerWindow
                     new CompareJanTraditionalEngagementRate();
 
                 infData.sort(comparator);
+
+                update();
             }
             else if (monthString.equals("February"))
             {
@@ -356,56 +358,77 @@ public class GUIInfluencerWindow
         {
             if (monthString.equals("First Quarter (Jan-March)"))
             {
-                int rate1 = (int)infData.get(0).traditionalEngagementRate()
+                int height1 = (int)infData.get(0).traditionalEngagementRate()
                     * BAR_SIZE_MULTIPLIER;
-                int rate2 = (int)infData.get(1).traditionalEngagementRate()
+                int height2 = (int)infData.get(1).traditionalEngagementRate()
                     * BAR_SIZE_MULTIPLIER;
-                int rate3 = (int)infData.get(2).traditionalEngagementRate()
+                int height3 = (int)infData.get(2).traditionalEngagementRate()
                     * BAR_SIZE_MULTIPLIER;
-                int rate4 = (int)infData.get(3).traditionalEngagementRate()
+                int height4 = (int)infData.get(3).traditionalEngagementRate()
                     * BAR_SIZE_MULTIPLIER;
+
+                if (height1 > 500)
+                {
+                    height1 = 500;
+                }
+                if (height2 > 500)
+                {
+                    height2 = 500;
+                }
+                if (height3 > 500)
+                {
+                    height3 = 500;
+                }
+                if (height4 > 500)
+                {
+                    height4 = 500;
+                }
 
                 bar1 = new Shape(
                     bar1.getX(),
                     bar1.getY(),
                     bar1.getWidth(),
-                    rate1,
+                    height1,
                     Color.BLUE);
+                window.addShape(bar1);
 
                 bar2 = new Shape(
                     bar2.getX(),
                     bar2.getY(),
                     bar2.getWidth(),
-                    rate2,
+                    height2,
                     Color.RED);
+                window.addShape(bar2);
 
                 bar3 = new Shape(
                     bar3.getX(),
                     bar3.getY(),
                     bar3.getWidth(),
-                    rate3,
+                    height3,
                     Color.GREEN);
+                window.addShape(bar3);
 
                 bar4 = new Shape(
                     bar4.getX(),
                     bar4.getY(),
                     bar4.getWidth(),
-                    rate4,
+                    height4,
                     Color.ORANGE);
+                window.addShape(bar4);
             }
 
             else if (monthString.equals("January"))
             {
-                int rate1 = (int)infData.get(0)
+                int height1 = (int)infData.get(0)
                     .monthTraditionalEngagementRate("January")
                     * BAR_SIZE_MULTIPLIER;
-                int rate2 = (int)infData.get(1)
+                int height2 = (int)infData.get(1)
                     .monthTraditionalEngagementRate("January")
                     * BAR_SIZE_MULTIPLIER;
-                int rate3 = (int)infData.get(2)
+                int height3 = (int)infData.get(2)
                     .monthTraditionalEngagementRate("January")
                     * BAR_SIZE_MULTIPLIER;
-                int rate4 = (int)infData.get(3)
+                int height4 = (int)infData.get(3)
                     .monthTraditionalEngagementRate("January")
                     * BAR_SIZE_MULTIPLIER;
 
@@ -413,42 +436,46 @@ public class GUIInfluencerWindow
                     bar1.getX(),
                     bar1.getY(),
                     bar1.getWidth(),
-                    rate1,
+                    height1,
                     Color.BLUE);
+                window.addShape(bar1);
 
                 bar2 = new Shape(
                     bar2.getX(),
                     bar2.getY(),
                     bar2.getWidth(),
-                    rate2,
+                    height2,
                     Color.RED);
+                window.addShape(bar2);
 
                 bar3 = new Shape(
                     bar3.getX(),
                     bar3.getY(),
                     bar3.getWidth(),
-                    rate3,
+                    height3,
                     Color.GREEN);
+                window.addShape(bar3);
 
                 bar4 = new Shape(
                     bar4.getX(),
                     bar4.getY(),
                     bar4.getWidth(),
-                    rate4,
+                    height4,
                     Color.ORANGE);
+                window.addShape(bar4);
             }
             else if (monthString.equals("February"))
             {
-                int rate1 = (int)infData.get(0)
+                int height1 = (int)infData.get(0)
                     .monthTraditionalEngagementRate("February")
                     * BAR_SIZE_MULTIPLIER;
-                int rate2 = (int)infData.get(1)
+                int height2 = (int)infData.get(1)
                     .monthTraditionalEngagementRate("February")
                     * BAR_SIZE_MULTIPLIER;
-                int rate3 = (int)infData.get(2)
+                int height3 = (int)infData.get(2)
                     .monthTraditionalEngagementRate("February")
                     * BAR_SIZE_MULTIPLIER;
-                int rate4 = (int)infData.get(3)
+                int height4 = (int)infData.get(3)
                     .monthTraditionalEngagementRate("February")
                     * BAR_SIZE_MULTIPLIER;
 
@@ -456,42 +483,46 @@ public class GUIInfluencerWindow
                     bar1.getX(),
                     bar1.getY(),
                     bar1.getWidth(),
-                    rate1,
+                    height1,
                     Color.BLUE);
+                window.addShape(bar1);
 
                 bar2 = new Shape(
                     bar2.getX(),
                     bar2.getY(),
                     bar2.getWidth(),
-                    rate2,
+                    height2,
                     Color.RED);
+                window.addShape(bar2);
 
                 bar3 = new Shape(
                     bar3.getX(),
                     bar3.getY(),
                     bar3.getWidth(),
-                    rate3,
+                    height3,
                     Color.GREEN);
+                window.addShape(bar3);
 
                 bar4 = new Shape(
                     bar4.getX(),
                     bar4.getY(),
                     bar4.getWidth(),
-                    rate4,
+                    height4,
                     Color.ORANGE);
+                window.addShape(bar4);
             }
             else if (monthString.equals("March"))
             {
-                int rate1 =
+                int height1 =
                     (int)infData.get(0).monthTraditionalEngagementRate("March")
                         * BAR_SIZE_MULTIPLIER;
-                int rate2 =
+                int height2 =
                     (int)infData.get(1).monthTraditionalEngagementRate("March")
                         * BAR_SIZE_MULTIPLIER;
-                int rate3 =
+                int height3 =
                     (int)infData.get(2).monthTraditionalEngagementRate("March")
                         * BAR_SIZE_MULTIPLIER;
-                int rate4 =
+                int height4 =
                     (int)infData.get(3).monthTraditionalEngagementRate("March")
                         * BAR_SIZE_MULTIPLIER;
 
@@ -499,29 +530,33 @@ public class GUIInfluencerWindow
                     bar1.getX(),
                     bar1.getY(),
                     bar1.getWidth(),
-                    rate1,
+                    height1,
                     Color.BLUE);
+                window.addShape(bar1);
 
                 bar2 = new Shape(
                     bar2.getX(),
                     bar2.getY(),
                     bar2.getWidth(),
-                    rate2,
+                    height2,
                     Color.RED);
+                window.addShape(bar2);
 
                 bar3 = new Shape(
                     bar3.getX(),
                     bar3.getY(),
                     bar3.getWidth(),
-                    rate3,
+                    height3,
                     Color.GREEN);
+                window.addShape(bar3);
 
                 bar4 = new Shape(
                     bar4.getX(),
                     bar4.getY(),
                     bar4.getWidth(),
-                    rate4,
+                    height4,
                     Color.ORANGE);
+                window.addShape(bar4);
             }
 
         }
