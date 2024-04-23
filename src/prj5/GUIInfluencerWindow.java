@@ -57,7 +57,7 @@ public class GUIInfluencerWindow
      * Value to calculate bar size; This number will be multiplied by engagement
      * rates; Can be capped if the number goes off screen
      */
-    public static final int BAR_SIZE_MULTIPLIER = 10;
+    public static final int BAR_SIZE_MULTIPLIER = 20;
 
     // ~ Constructors ..........................................................
 
@@ -91,8 +91,8 @@ public class GUIInfluencerWindow
 
         bar1 = new Shape(180, 530, 40, 0, Color.BLUE);
         bar2 = new Shape(380, 530, 40, 0, Color.RED);
-        bar3 = new Shape(580, 530, 40, 0, Color.GREEN);
-        bar4 = new Shape(680, 530, 40, 0, Color.ORANGE);
+        bar2 = new Shape(580, 530, 40, 0, Color.GREEN);
+        bar3 = new Shape(680, 530, 40, 0, Color.ORANGE);
 
         window.addShape(bar1);
         window.addShape(bar2);
@@ -254,8 +254,6 @@ public class GUIInfluencerWindow
                     new CompareQuarterTraditionalEngagementRate();
 
                 infData.sort(comparator);
-
-                update();
             }
 
             else if (monthString.equals("January"))
@@ -264,8 +262,6 @@ public class GUIInfluencerWindow
                     new CompareJanTraditionalEngagementRate();
 
                 infData.sort(comparator);
-
-                update();
             }
             else if (monthString.equals("February"))
             {
@@ -273,8 +269,6 @@ public class GUIInfluencerWindow
                     new CompareFebTraditionalEngagementRate();
 
                 infData.sort(comparator);
-
-                update();
             }
             else if (monthString.equals("March"))
             {
@@ -282,8 +276,6 @@ public class GUIInfluencerWindow
                     new CompareMarTraditionalEngagementRate();
 
                 infData.sort(comparator);
-
-                update();
             }
 
         }
@@ -295,8 +287,6 @@ public class GUIInfluencerWindow
                     new CompareQuarterReachEngagementRate();
 
                 infData.sort(comparator);
-
-                update();
             }
 
             else if (monthString.equals("January"))
@@ -305,8 +295,6 @@ public class GUIInfluencerWindow
                     new CompareJanReachEngagementRate();
 
                 infData.sort(comparator);
-
-                update();
             }
             else if (monthString.equals("February"))
             {
@@ -314,8 +302,6 @@ public class GUIInfluencerWindow
                     new CompareFebReachEngagementRate();
 
                 infData.sort(comparator);
-
-                update();
             }
             else if (monthString.equals("March"))
             {
@@ -323,8 +309,6 @@ public class GUIInfluencerWindow
                     new CompareMarReachEngagementRate();
 
                 infData.sort(comparator);
-
-                update();
             }
         }
     }
@@ -368,81 +352,121 @@ public class GUIInfluencerWindow
     public void update()
     {
 
-        if (engagementTypeString.equals("Traditional Engagement Rate"))
+        if (sortMethodString.equals("Reach Engagement Rate"))
         {
             if (monthString.equals("First Quarter (Jan-March)"))
             {
-                int height1 = (int)infData.get(0).traditionalEngagementRate()
+                int rate1 = (int)infData.get(0).traditionalEngagementRate()
                     * BAR_SIZE_MULTIPLIER;
-                int height2 = (int)infData.get(1).traditionalEngagementRate()
+                int rate2 = (int)infData.get(1).traditionalEngagementRate()
                     * BAR_SIZE_MULTIPLIER;
-                int height3 = (int)infData.get(2).traditionalEngagementRate()
+                int rate3 = (int)infData.get(2).traditionalEngagementRate()
                     * BAR_SIZE_MULTIPLIER;
-                int height4 = (int)infData.get(3).traditionalEngagementRate()
+                int rate4 = (int)infData.get(3).traditionalEngagementRate()
                     * BAR_SIZE_MULTIPLIER;
-
-                if (height1 > 500)
-                {
-                    height1 = 500;
-                }
-                if (height2 > 500)
-                {
-                    height2 = 500;
-                }
-                if (height3 > 500)
-                {
-                    height3 = 500;
-                }
-                if (height4 > 500)
-                {
-                    height4 = 500;
-                }
 
                 bar1 = new Shape(
                     bar1.getX(),
                     bar1.getY(),
                     bar1.getWidth(),
-                    height1,
+                    rate1,
                     Color.BLUE);
-                window.addShape(bar1);
 
                 bar2 = new Shape(
                     bar2.getX(),
                     bar2.getY(),
                     bar2.getWidth(),
-                    height2,
+                    rate2,
                     Color.RED);
-                window.addShape(bar2);
 
                 bar3 = new Shape(
                     bar3.getX(),
                     bar3.getY(),
                     bar3.getWidth(),
-                    height3,
+                    rate3,
                     Color.GREEN);
-                window.addShape(bar3);
 
                 bar4 = new Shape(
                     bar4.getX(),
                     bar4.getY(),
                     bar4.getWidth(),
-                    height4,
+                    rate4,
                     Color.ORANGE);
-                window.addShape(bar4);
+
+                String bar4Channel =
+                    new String(infData.get(3).getChannelName());
+                String bar3Channel =
+                    new String(infData.get(2).getChannelName());
+                String bar2Channel =
+                    new String(infData.get(1).getChannelName());
+                String bar1Channel =
+                    new String(infData.get(0).getChannelName());
+
+                Double bar4FQEngageRate =
+                    infData.get(3).traditionalEngagementRate();
+                Double bar3FQEngageRate =
+                    infData.get(2).traditionalEngagementRate();
+                Double bar2FQEngageRate =
+                    infData.get(1).traditionalEngagementRate();
+                Double bar1FQEngageRate =
+                    infData.get(0).traditionalEngagementRate();
+
+                TextShape fourChannelText = new TextShape(
+                    bar4.getX() - bar4.getWidth(),
+                    bar4.getY() - bar4.getHeight(),
+                    bar4Channel);
+                TextShape threeChannelText = new TextShape(
+                    bar3.getX() - bar3.getWidth(),
+                    bar3.getY() - bar3.getHeight(),
+                    bar3Channel);
+                TextShape twoChannelText = new TextShape(
+                    bar2.getX() - bar2.getWidth(),
+                    bar2.getY() - bar2.getHeight(),
+                    bar2Channel);
+                TextShape oneChannelText = new TextShape(
+                    bar1.getX() - bar1.getWidth(),
+                    bar1.getY() - bar1.getHeight(),
+                    bar1Channel);
+
+                TextShape fourFQEngageRate = new TextShape(
+                    fourChannelText.getX(),
+                    fourChannelText.getY() - 50,
+                    bar4FQEngageRate.toString());
+                TextShape threeFQEngageRate = new TextShape(
+                    threeChannelText.getX(),
+                    threeChannelText.getY() - 50,
+                    bar3FQEngageRate.toString());
+                TextShape twoFQEngageRate = new TextShape(
+                    twoChannelText.getX(),
+                    twoChannelText.getY() - 50,
+                    bar2FQEngageRate.toString());
+                TextShape oneFQEngageRate = new TextShape(
+                    oneChannelText.getX(),
+                    oneChannelText.getY() - 50,
+                    bar1FQEngageRate.toString());
+
+                window.addShape(fourChannelText);
+                window.addShape(threeChannelText);
+                window.addShape(twoChannelText);
+                window.addShape(oneChannelText);
+                window.addShape(fourFQEngageRate);
+                window.addShape(threeFQEngageRate);
+                window.addShape(twoFQEngageRate);
+                window.addShape(oneFQEngageRate);
             }
 
             else if (monthString.equals("January"))
             {
-                int height1 = (int)infData.get(0)
+                int rate1 = (int)infData.get(0)
                     .monthTraditionalEngagementRate("January")
                     * BAR_SIZE_MULTIPLIER;
-                int height2 = (int)infData.get(1)
+                int rate2 = (int)infData.get(1)
                     .monthTraditionalEngagementRate("January")
                     * BAR_SIZE_MULTIPLIER;
-                int height3 = (int)infData.get(2)
+                int rate3 = (int)infData.get(2)
                     .monthTraditionalEngagementRate("January")
                     * BAR_SIZE_MULTIPLIER;
-                int height4 = (int)infData.get(3)
+                int rate4 = (int)infData.get(3)
                     .monthTraditionalEngagementRate("January")
                     * BAR_SIZE_MULTIPLIER;
 
@@ -450,46 +474,103 @@ public class GUIInfluencerWindow
                     bar1.getX(),
                     bar1.getY(),
                     bar1.getWidth(),
-                    height1,
+                    rate1,
                     Color.BLUE);
-                window.addShape(bar1);
 
                 bar2 = new Shape(
                     bar2.getX(),
                     bar2.getY(),
                     bar2.getWidth(),
-                    height2,
+                    rate2,
                     Color.RED);
-                window.addShape(bar2);
 
                 bar3 = new Shape(
                     bar3.getX(),
                     bar3.getY(),
                     bar3.getWidth(),
-                    height3,
+                    rate3,
                     Color.GREEN);
-                window.addShape(bar3);
 
                 bar4 = new Shape(
                     bar4.getX(),
                     bar4.getY(),
                     bar4.getWidth(),
-                    height4,
+                    rate4,
                     Color.ORANGE);
-                window.addShape(bar4);
+
+                String bar4Channel =
+                    new String(infData.get(3).getChannelName());
+                String bar3Channel =
+                    new String(infData.get(2).getChannelName());
+                String bar2Channel =
+                    new String(infData.get(1).getChannelName());
+                String bar1Channel =
+                    new String(infData.get(0).getChannelName());
+
+                Double bar4FQEngageRate =
+                    infData.get(3).monthTraditionalEngagementRate("January");
+                Double bar3FQEngageRate =
+                    infData.get(2).monthTraditionalEngagementRate("January");
+                Double bar2FQEngageRate =
+                    infData.get(1).monthTraditionalEngagementRate("January");
+                Double bar1FQEngageRate =
+                    infData.get(0).monthTraditionalEngagementRate("January");
+
+                TextShape fourChannelText = new TextShape(
+                    bar4.getX() - bar4.getWidth(),
+                    bar4.getY() - bar4.getHeight(),
+                    bar4Channel);
+                TextShape threeChannelText = new TextShape(
+                    bar3.getX() - bar3.getWidth(),
+                    bar3.getY() - bar3.getHeight(),
+                    bar3Channel);
+                TextShape twoChannelText = new TextShape(
+                    bar2.getX() - bar2.getWidth(),
+                    bar2.getY() - bar2.getHeight(),
+                    bar2Channel);
+                TextShape oneChannelText = new TextShape(
+                    bar1.getX() - bar1.getWidth(),
+                    bar1.getY() - bar1.getHeight(),
+                    bar1Channel);
+
+                TextShape fourFQEngageRate = new TextShape(
+                    fourChannelText.getX(),
+                    fourChannelText.getY() - 50,
+                    bar4FQEngageRate.toString());
+                TextShape threeFQEngageRate = new TextShape(
+                    threeChannelText.getX(),
+                    threeChannelText.getY() - 50,
+                    bar3FQEngageRate.toString());
+                TextShape twoFQEngageRate = new TextShape(
+                    twoChannelText.getX(),
+                    twoChannelText.getY() - 50,
+                    bar2FQEngageRate.toString());
+                TextShape oneFQEngageRate = new TextShape(
+                    oneChannelText.getX(),
+                    oneChannelText.getY() - 50,
+                    bar1FQEngageRate.toString());
+
+                window.addShape(fourChannelText);
+                window.addShape(threeChannelText);
+                window.addShape(twoChannelText);
+                window.addShape(oneChannelText);
+                window.addShape(fourFQEngageRate);
+                window.addShape(threeFQEngageRate);
+                window.addShape(twoFQEngageRate);
+                window.addShape(oneFQEngageRate);
             }
             else if (monthString.equals("February"))
             {
-                int height1 = (int)infData.get(0)
+                int rate1 = (int)infData.get(0)
                     .monthTraditionalEngagementRate("February")
                     * BAR_SIZE_MULTIPLIER;
-                int height2 = (int)infData.get(1)
+                int rate2 = (int)infData.get(1)
                     .monthTraditionalEngagementRate("February")
                     * BAR_SIZE_MULTIPLIER;
-                int height3 = (int)infData.get(2)
+                int rate3 = (int)infData.get(2)
                     .monthTraditionalEngagementRate("February")
                     * BAR_SIZE_MULTIPLIER;
-                int height4 = (int)infData.get(3)
+                int rate4 = (int)infData.get(3)
                     .monthTraditionalEngagementRate("February")
                     * BAR_SIZE_MULTIPLIER;
 
@@ -497,46 +578,103 @@ public class GUIInfluencerWindow
                     bar1.getX(),
                     bar1.getY(),
                     bar1.getWidth(),
-                    height1,
+                    rate1,
                     Color.BLUE);
-                window.addShape(bar1);
 
                 bar2 = new Shape(
                     bar2.getX(),
                     bar2.getY(),
                     bar2.getWidth(),
-                    height2,
+                    rate2,
                     Color.RED);
-                window.addShape(bar2);
 
                 bar3 = new Shape(
                     bar3.getX(),
                     bar3.getY(),
                     bar3.getWidth(),
-                    height3,
+                    rate3,
                     Color.GREEN);
-                window.addShape(bar3);
 
                 bar4 = new Shape(
                     bar4.getX(),
                     bar4.getY(),
                     bar4.getWidth(),
-                    height4,
+                    rate4,
                     Color.ORANGE);
-                window.addShape(bar4);
+
+                String bar4Channel =
+                    new String(infData.get(3).getChannelName());
+                String bar3Channel =
+                    new String(infData.get(2).getChannelName());
+                String bar2Channel =
+                    new String(infData.get(1).getChannelName());
+                String bar1Channel =
+                    new String(infData.get(0).getChannelName());
+
+                Double bar4FQEngageRate =
+                    infData.get(3).monthTraditionalEngagementRate("February");
+                Double bar3FQEngageRate =
+                    infData.get(2).monthTraditionalEngagementRate("February");
+                Double bar2FQEngageRate =
+                    infData.get(1).monthTraditionalEngagementRate("February");
+                Double bar1FQEngageRate =
+                    infData.get(0).monthTraditionalEngagementRate("February");
+
+                TextShape fourChannelText = new TextShape(
+                    bar4.getX() - bar4.getWidth(),
+                    bar4.getY() - bar4.getHeight(),
+                    bar4Channel);
+                TextShape threeChannelText = new TextShape(
+                    bar3.getX() - bar3.getWidth(),
+                    bar3.getY() - bar3.getHeight(),
+                    bar3Channel);
+                TextShape twoChannelText = new TextShape(
+                    bar2.getX() - bar2.getWidth(),
+                    bar2.getY() - bar2.getHeight(),
+                    bar2Channel);
+                TextShape oneChannelText = new TextShape(
+                    bar1.getX() - bar1.getWidth(),
+                    bar1.getY() - bar1.getHeight(),
+                    bar1Channel);
+
+                TextShape fourFQEngageRate = new TextShape(
+                    fourChannelText.getX(),
+                    fourChannelText.getY() - 50,
+                    bar4FQEngageRate.toString());
+                TextShape threeFQEngageRate = new TextShape(
+                    threeChannelText.getX(),
+                    threeChannelText.getY() - 50,
+                    bar3FQEngageRate.toString());
+                TextShape twoFQEngageRate = new TextShape(
+                    twoChannelText.getX(),
+                    twoChannelText.getY() - 50,
+                    bar2FQEngageRate.toString());
+                TextShape oneFQEngageRate = new TextShape(
+                    oneChannelText.getX(),
+                    oneChannelText.getY() - 50,
+                    bar1FQEngageRate.toString());
+
+                window.addShape(fourChannelText);
+                window.addShape(threeChannelText);
+                window.addShape(twoChannelText);
+                window.addShape(oneChannelText);
+                window.addShape(fourFQEngageRate);
+                window.addShape(threeFQEngageRate);
+                window.addShape(twoFQEngageRate);
+                window.addShape(oneFQEngageRate);
             }
             else if (monthString.equals("March"))
             {
-                int height1 =
+                int rate1 =
                     (int)infData.get(0).monthTraditionalEngagementRate("March")
                         * BAR_SIZE_MULTIPLIER;
-                int height2 =
+                int rate2 =
                     (int)infData.get(1).monthTraditionalEngagementRate("March")
                         * BAR_SIZE_MULTIPLIER;
-                int height3 =
+                int rate3 =
                     (int)infData.get(2).monthTraditionalEngagementRate("March")
                         * BAR_SIZE_MULTIPLIER;
-                int height4 =
+                int rate4 =
                     (int)infData.get(3).monthTraditionalEngagementRate("March")
                         * BAR_SIZE_MULTIPLIER;
 
@@ -544,33 +682,90 @@ public class GUIInfluencerWindow
                     bar1.getX(),
                     bar1.getY(),
                     bar1.getWidth(),
-                    height1,
+                    rate1,
                     Color.BLUE);
-                window.addShape(bar1);
 
                 bar2 = new Shape(
                     bar2.getX(),
                     bar2.getY(),
                     bar2.getWidth(),
-                    height2,
+                    rate2,
                     Color.RED);
-                window.addShape(bar2);
 
                 bar3 = new Shape(
                     bar3.getX(),
                     bar3.getY(),
                     bar3.getWidth(),
-                    height3,
+                    rate3,
                     Color.GREEN);
-                window.addShape(bar3);
 
                 bar4 = new Shape(
                     bar4.getX(),
                     bar4.getY(),
                     bar4.getWidth(),
-                    height4,
+                    rate4,
                     Color.ORANGE);
-                window.addShape(bar4);
+
+                String bar4Channel =
+                    new String(infData.get(3).getChannelName());
+                String bar3Channel =
+                    new String(infData.get(2).getChannelName());
+                String bar2Channel =
+                    new String(infData.get(1).getChannelName());
+                String bar1Channel =
+                    new String(infData.get(0).getChannelName());
+
+                Double bar4FQEngageRate =
+                    infData.get(3).monthTraditionalEngagementRate("March");
+                Double bar3FQEngageRate =
+                    infData.get(2).monthTraditionalEngagementRate("March");
+                Double bar2FQEngageRate =
+                    infData.get(1).monthTraditionalEngagementRate("March");
+                Double bar1FQEngageRate =
+                    infData.get(0).monthTraditionalEngagementRate("March");
+
+                TextShape fourChannelText = new TextShape(
+                    bar4.getX() - bar4.getWidth(),
+                    bar4.getY() - bar4.getHeight(),
+                    bar4Channel);
+                TextShape threeChannelText = new TextShape(
+                    bar3.getX() - bar3.getWidth(),
+                    bar3.getY() - bar3.getHeight(),
+                    bar3Channel);
+                TextShape twoChannelText = new TextShape(
+                    bar2.getX() - bar2.getWidth(),
+                    bar2.getY() - bar2.getHeight(),
+                    bar2Channel);
+                TextShape oneChannelText = new TextShape(
+                    bar1.getX() - bar1.getWidth(),
+                    bar1.getY() - bar1.getHeight(),
+                    bar1Channel);
+
+                TextShape fourFQEngageRate = new TextShape(
+                    fourChannelText.getX(),
+                    fourChannelText.getY() - 50,
+                    bar4FQEngageRate.toString());
+                TextShape threeFQEngageRate = new TextShape(
+                    threeChannelText.getX(),
+                    threeChannelText.getY() - 50,
+                    bar3FQEngageRate.toString());
+                TextShape twoFQEngageRate = new TextShape(
+                    twoChannelText.getX(),
+                    twoChannelText.getY() - 50,
+                    bar2FQEngageRate.toString());
+                TextShape oneFQEngageRate = new TextShape(
+                    oneChannelText.getX(),
+                    oneChannelText.getY() - 50,
+                    bar1FQEngageRate.toString());
+
+                window.addShape(fourChannelText);
+                window.addShape(threeChannelText);
+                window.addShape(twoChannelText);
+                window.addShape(oneChannelText);
+                window.addShape(fourFQEngageRate);
+                window.addShape(threeFQEngageRate);
+                window.addShape(twoFQEngageRate);
+                window.addShape(oneFQEngageRate);
             }
 
         }
