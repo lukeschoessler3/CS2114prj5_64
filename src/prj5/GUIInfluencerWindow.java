@@ -336,4 +336,14 @@ public class GUIInfluencerWindow
         engagementText.setText(engagementTypeString);
     }
 
+
+    // ----------------------------------------------------------
+    /**
+     * Updates the graphs
+     */
+    public void update()
+    {
+
+    }
+
 }
