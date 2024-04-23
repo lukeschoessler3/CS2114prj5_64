@@ -24,10 +24,23 @@ public class GUIInfluencerWindow
     private Button february;
     private Button march;
     private Button firstQuarter;
-    private int dataWindowSize;
+    // Text shape for the month/quarter
+    private TextShape monthText;
+    // Text shape for the sorting type
+    private TextShape sortText;
+    // Text shape for the engagement type if sorting by engagement
+    private TextShape engagementText;
+    // Size of window
+    private int dataWindowHeight;
+    private int dataWindowWidth;
+    // What will be displayed for the month/quarter
     private String monthString;
+    // What will be displayed for the sorting method
     private String sortMethodString;
+    // What will be displayed for the engagement type if sorting by engagement
     private String engagementTypeString;
+    // Value to calculate bar size; This number will be multiplied by engagement
+    // rates; Can be capped if the number goes off screen
     public static final int BAR_SIZE_MULTIPLIER = 2;
 
     // ~ Constructors ..........................................................
@@ -44,7 +57,21 @@ public class GUIInfluencerWindow
         monthString = "";
         sortMethodString = "";
         engagementTypeString = "";
+        dataWindowHeight = 800;
+        dataWindowWidth = 1200;
+
         window = new Window();
+        window.setTitle("Social Media Vis");
+        window.setSize(dataWindowWidth, dataWindowHeight);
+
+        monthText = new TextShape(10, 10, "");
+        window.addShape(monthText);
+
+        engagementText = new TextShape(10, 30, "");
+        window.addShape(engagementText);
+
+        sortText = new TextShape(10, 50, "");
+        window.addShape(sortText);
 
         sortChannelName = new Button("Sort by Channel Name");
         sortChannelName.onClick(this, "clickedSortChannel");
@@ -71,7 +98,7 @@ public class GUIInfluencerWindow
         window.addButton(january, WindowSide.SOUTH);
 
         february = new Button("February");
-        february.onClick(this, "clickedFen");
+        february.onClick(this, "clickedFeb");
         window.addButton(february, WindowSide.SOUTH);
 
         march = new Button("March");
@@ -96,7 +123,9 @@ public class GUIInfluencerWindow
      */
     public void clickedJan(Button janButton)
     {
+        monthString = "January";
 
+        monthText.setText(monthString);
     }
 
 
@@ -110,7 +139,9 @@ public class GUIInfluencerWindow
 
     public void clickedFeb(Button febButton)
     {
+        monthString = "February";
 
+        monthText.setText(monthString);
     }
 
 
@@ -123,7 +154,9 @@ public class GUIInfluencerWindow
      */
     public void clickedMar(Button marchButton)
     {
+        monthString = "March";
 
+        monthText.setText(monthString);
     }
 
 
@@ -136,7 +169,9 @@ public class GUIInfluencerWindow
      */
     public void clickedQ1(Button firstQuarterButton)
     {
+        monthString = "First Quarter (Jan-March)";
 
+        monthText.setText(monthString);
     }
 
 
@@ -162,7 +197,13 @@ public class GUIInfluencerWindow
      */
     public void clickedSortChannel(Button sortChannel)
     {
+        sortMethodString = "Sorting by Channel Name";
 
+        sortText.setText(sortMethodString);
+
+        CompareByChannelName comparator = new CompareByChannelName();
+
+        infData.sort(comparator);
     }
 
 
@@ -175,7 +216,75 @@ public class GUIInfluencerWindow
      */
     public void clickedSortEngagement(Button sortEngage)
     {
+        sortMethodString = "Sorting by Engagement Rate";
 
+        sortText.setText(sortMethodString);
+
+        if (engagementTypeString.equals("Traditional Engagement Rate"))
+        {
+            if (monthString.equals("First Quarter (Jan-March)"))
+            {
+                CompareQuarterTraditionalEngagementRate comparator =
+                    new CompareQuarterTraditionalEngagementRate();
+
+                infData.sort(comparator);
+            }
+
+            else if (monthString.equals("January"))
+            {
+                CompareJanTraditionalEngagementRate comparator =
+                    new CompareJanTraditionalEngagementRate();
+
+                infData.sort(comparator);
+            }
+            else if (monthString.equals("February"))
+            {
+                CompareFebTraditionalEngagementRate comparator =
+                    new CompareFebTraditionalEngagementRate();
+
+                infData.sort(comparator);
+            }
+            else if (monthString.equals("March"))
+            {
+                CompareMarTraditionalEngagementRate comparator =
+                    new CompareMarTraditionalEngagementRate();
+
+                infData.sort(comparator);
+            }
+
+        }
+        else if (engagementTypeString.equals("Reach Engagement Rate"))
+        {
+            if (monthString.equals("First Quarter (Jan-March)"))
+            {
+                CompareQuarterReachEngagementRate comparator =
+                    new CompareQuarterReachEngagementRate();
+
+                infData.sort(comparator);
+            }
+
+            else if (monthString.equals("January"))
+            {
+                CompareJanReachEngagementRate comparator =
+                    new CompareJanReachEngagementRate();
+
+                infData.sort(comparator);
+            }
+            else if (monthString.equals("February"))
+            {
+                CompareFebReachEngagementRate comparator =
+                    new CompareFebReachEngagementRate();
+
+                infData.sort(comparator);
+            }
+            else if (monthString.equals("March"))
+            {
+                CompareMarReachEngagementRate comparator =
+                    new CompareMarReachEngagementRate();
+
+                infData.sort(comparator);
+            }
+        }
     }
 
 
@@ -188,7 +297,9 @@ public class GUIInfluencerWindow
      */
     public void clickedTraditional(Button traditional)
     {
+        engagementTypeString = "Traditional Engagement Rate";
 
+        engagementText.setText(engagementTypeString);
     }
 
 
@@ -201,7 +312,9 @@ public class GUIInfluencerWindow
      */
     public void clickedReach(Button reach)
     {
+        engagementTypeString = "Reach Engagement Rate";
 
+        engagementText.setText(engagementTypeString);
     }
 
 }

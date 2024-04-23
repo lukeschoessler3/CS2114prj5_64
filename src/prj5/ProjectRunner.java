@@ -34,18 +34,24 @@ public class ProjectRunner
     {
 
         InputFileReader filer;
+        GUIInfluencerWindow window;
+        String fileName;
+        SinglyLinkedList<Influencer> infData;
 
         if (args.length > 0)
         {
             filer = new InputFileReader(args[0]);
+            fileName = args[0];
+
         }
         else
         {
             filer = new InputFileReader("SampleInput1_2023.csv");
+            fileName = "SampleInput1_2023.csv";
         }
 
-        boolean showConsole = true;
-        boolean showGUI = false;
+        boolean showConsole = false;
+        boolean showGUI = true;
 
         if (showConsole)
         {
@@ -55,7 +61,8 @@ public class ProjectRunner
         }
         if (showGUI)
         {
-            // Should not be implemented till final submission
+            infData = filer.readFile(fileName);
+            window = new GUIInfluencerWindow(infData);
         }
     }
 
