@@ -352,7 +352,7 @@ public class GUIInfluencerWindow
     public void update()
     {
 
-        if (sortMethodString.equals("Reach Engagement Rate"))
+        if (engagementTypeString.equals("Traditional Engagement Rate"))
         {
             if (monthString.equals("First Quarter (Jan-March)"))
             {
