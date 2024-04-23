@@ -574,6 +574,212 @@ public class GUIInfluencerWindow
             }
 
         }
+        if (engagementTypeString.equals("Reach Engagement Rate"))
+        {
+            if (monthString.equals("First Quarter (Jan-March)"))
+            {
+                int height1 = (int)infData.get(0).reachEngagementRate()
+                    * BAR_SIZE_MULTIPLIER;
+                int height2 = (int)infData.get(1).reachEngagementRate()
+                    * BAR_SIZE_MULTIPLIER;
+                int height3 = (int)infData.get(2).reachEngagementRate()
+                    * BAR_SIZE_MULTIPLIER;
+                int height4 = (int)infData.get(3).reachEngagementRate()
+                    * BAR_SIZE_MULTIPLIER;
+
+                if (height1 > 500)
+                {
+                    height1 = 500;
+                }
+                if (height2 > 500)
+                {
+                    height2 = 500;
+                }
+                if (height3 > 500)
+                {
+                    height3 = 500;
+                }
+                if (height4 > 500)
+                {
+                    height4 = 500;
+                }
+
+                bar1 = new Shape(
+                    bar1.getX(),
+                    bar1.getY(),
+                    bar1.getWidth(),
+                    height1,
+                    Color.BLUE);
+                window.addShape(bar1);
+
+                bar2 = new Shape(
+                    bar2.getX(),
+                    bar2.getY(),
+                    bar2.getWidth(),
+                    height2,
+                    Color.RED);
+                window.addShape(bar2);
+
+                bar3 = new Shape(
+                    bar3.getX(),
+                    bar3.getY(),
+                    bar3.getWidth(),
+                    height3,
+                    Color.GREEN);
+                window.addShape(bar3);
+
+                bar4 = new Shape(
+                    bar4.getX(),
+                    bar4.getY(),
+                    bar4.getWidth(),
+                    height4,
+                    Color.ORANGE);
+                window.addShape(bar4);
+            }
+
+            else if (monthString.equals("January"))
+            {
+                int height1 = (int)infData.get(0)
+                    .monthReachEngagementRate("January")
+                    * BAR_SIZE_MULTIPLIER;
+                int height2 = (int)infData.get(1)
+                    .monthReachEngagementRate("January")
+                    * BAR_SIZE_MULTIPLIER;
+                int height3 = (int)infData.get(2)
+                    .monthReachEngagementRate("January")
+                    * BAR_SIZE_MULTIPLIER;
+                int height4 = (int)infData.get(3)
+                    .monthReachEngagementRate("January")
+                    * BAR_SIZE_MULTIPLIER;
+
+                bar1 = new Shape(
+                    bar1.getX(),
+                    bar1.getY(),
+                    bar1.getWidth(),
+                    height1,
+                    Color.BLUE);
+                window.addShape(bar1);
+
+                bar2 = new Shape(
+                    bar2.getX(),
+                    bar2.getY(),
+                    bar2.getWidth(),
+                    height2,
+                    Color.RED);
+                window.addShape(bar2);
+
+                bar3 = new Shape(
+                    bar3.getX(),
+                    bar3.getY(),
+                    bar3.getWidth(),
+                    height3,
+                    Color.GREEN);
+                window.addShape(bar3);
+
+                bar4 = new Shape(
+                    bar4.getX(),
+                    bar4.getY(),
+                    bar4.getWidth(),
+                    height4,
+                    Color.ORANGE);
+                window.addShape(bar4);
+            }
+            else if (monthString.equals("February"))
+            {
+                int height1 = (int)infData.get(0)
+                    .monthReachEngagementRate("February")
+                    * BAR_SIZE_MULTIPLIER;
+                int height2 = (int)infData.get(1)
+                    .monthReachEngagementRate("February")
+                    * BAR_SIZE_MULTIPLIER;
+                int height3 = (int)infData.get(2)
+                    .monthReachEngagementRate("February")
+                    * BAR_SIZE_MULTIPLIER;
+                int height4 = (int)infData.get(3)
+                    .monthReachEngagementRate("February")
+                    * BAR_SIZE_MULTIPLIER;
+
+                bar1 = new Shape(
+                    bar1.getX(),
+                    bar1.getY(),
+                    bar1.getWidth(),
+                    height1,
+                    Color.BLUE);
+                window.addShape(bar1);
+
+                bar2 = new Shape(
+                    bar2.getX(),
+                    bar2.getY(),
+                    bar2.getWidth(),
+                    height2,
+                    Color.RED);
+                window.addShape(bar2);
+
+                bar3 = new Shape(
+                    bar3.getX(),
+                    bar3.getY(),
+                    bar3.getWidth(),
+                    height3,
+                    Color.GREEN);
+                window.addShape(bar3);
+
+                bar4 = new Shape(
+                    bar4.getX(),
+                    bar4.getY(),
+                    bar4.getWidth(),
+                    height4,
+                    Color.ORANGE);
+                window.addShape(bar4);
+            }
+            else if (monthString.equals("March"))
+            {
+                int height1 =
+                    (int)infData.get(0).monthReachEngagementRate("March")
+                        * BAR_SIZE_MULTIPLIER;
+                int height2 =
+                    (int)infData.get(1).monthReachEngagementRate("March")
+                        * BAR_SIZE_MULTIPLIER;
+                int height3 =
+                    (int)infData.get(2).monthReachEngagementRate("March")
+                        * BAR_SIZE_MULTIPLIER;
+                int height4 =
+                    (int)infData.get(3).monthReachEngagementRate("March")
+                        * BAR_SIZE_MULTIPLIER;
+
+                bar1 = new Shape(
+                    bar1.getX(),
+                    bar1.getY(),
+                    bar1.getWidth(),
+                    height1,
+                    Color.BLUE);
+                window.addShape(bar1);
+
+                bar2 = new Shape(
+                    bar2.getX(),
+                    bar2.getY(),
+                    bar2.getWidth(),
+                    height2,
+                    Color.RED);
+                window.addShape(bar2);
+
+                bar3 = new Shape(
+                    bar3.getX(),
+                    bar3.getY(),
+                    bar3.getWidth(),
+                    height3,
+                    Color.GREEN);
+                window.addShape(bar3);
+
+                bar4 = new Shape(
+                    bar4.getX(),
+                    bar4.getY(),
+                    bar4.getWidth(),
+                    height4,
+                    Color.ORANGE);
+                window.addShape(bar4);
+            }
+
+        }
 
     }
 
