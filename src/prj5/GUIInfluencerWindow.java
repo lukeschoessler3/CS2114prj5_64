@@ -51,9 +51,6 @@ public class GUIInfluencerWindow
     // Value to calculate bar size; This number will be multiplied by engagement
     // rates; Can be capped if the number goes off screen
     public static final int BAR_SIZE_MULTIPLIER = 2;
-    // Colors Array; ensure that the same colors are called
-    // each time
-    public static final String[] COLORS = {""};
 
     // ~ Constructors ..........................................................
 
