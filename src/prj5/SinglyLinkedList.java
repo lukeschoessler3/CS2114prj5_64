@@ -327,7 +327,6 @@ public class SinglyLinkedList<E>
     @Override
     public void clear()
     {
-
         if (head != null)
         {
             head.setNext(null);
@@ -460,7 +459,9 @@ public class SinglyLinkedList<E>
 
     // ----------------------------------------------------------
     /**
-     * Sorts based on the comparator
+     * Sorts based on the comparator. Uses wildcard to allow for
+     * all types of comparators to be used. This allows for the 
+     * LList to be sorted based off different parameters.
      * 
      * @param c
      *            the comparator

@@ -149,6 +149,8 @@ public class InfluencerTest
         assertEquals(inf.getFirstQuarter()[1].getMonthName(), "February");
         assertEquals(inf.getFirstQuarter()[2].getMonthName(), "March");
 
+        // Ensure that influencer's have applicable and non-applicable
+        // first quarters
         Month[] months2 = new Month[] { none, jun, aug, dec, jan, mar, apr, may,
             nov, sep, oct, jul };
 

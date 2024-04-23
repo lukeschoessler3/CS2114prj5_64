@@ -91,11 +91,17 @@ public class InputFileReader
 
                 String monthName = values[0];
 
+                // Check if the month name is valid, some input
+                // files contain months that have invalid OR
+                // null months
+                // If not, skip the line
                 if (!isValidMonth(monthName))
                 {
                     scanner.nextLine();
                 }
-
+                
+                // Obtain all the token values of the given
+                // single-line from the input file
                 monthName = values[0];
                 String username = values[1];
                 String channel = values[2];
@@ -107,6 +113,8 @@ public class InputFileReader
                 int comments = toInt(values[8]);
                 int views = toInt(values[9]);
 
+                // Create new Month and Influencer objects
+                // these will be stored to be sorted later
                 Month newMonth = new Month(
                     monthName,
                     likes,
@@ -115,6 +123,8 @@ public class InputFileReader
                     posts,
                     followers);
 
+                // Add the created objects to a list by indexing
+                // from a for loop
                 if (infCount == 0)
                 {
                     Month[] monthArray = new Month[12];
@@ -199,6 +209,8 @@ public class InputFileReader
             { "January", "February", "March", "April", "May", "June", "July",
                 "August", "September", "October", "November", "December" };
 
+        // if the parameter month does not match any of the months
+        // in the array, the month is NOT valid
         for (int i = 0; i < validMonthNames.length; i++)
         {
             if (monthName.equals(validMonthNames[i]))
@@ -212,7 +224,7 @@ public class InputFileReader
 
 
     /**
-     * Gets the items in an array
+     * Gets the number of items in an array
      * 
      * @param array
      *            array of months
@@ -243,12 +255,17 @@ public class InputFileReader
     public void printDataToConsole(String type)
     {
 
+        // If we are sorting by the Tradnitional Engagement Aspect,
+        // use the respsected comparators
         if (type.equals(TRADITIONAL))
         {
             CompareByChannelName compare = new CompareByChannelName();
             infData.sort(compare);
             printTraditionalEngagement();
         }
+        
+        // If we are sorting by Reach Engagement Aspect,
+        // use the respected comparators
         else if (type.equals(REACH))
         {
             CompareQuarterReachEngagementRate compareReach =
@@ -258,10 +275,13 @@ public class InputFileReader
         }
     }
 
+    // Format for infinite decimals that are not rounded
     private DecimalFormat df = new DecimalFormat("#.#");
 
     private void printTraditionalEngagement()
     {
+        // Printing out the text in the Traditional Engagement
+        // format
         for (int i = 0; i < infData.size(); i++)
         {
             Influencer influencer = infData.get(i);

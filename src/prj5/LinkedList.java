@@ -12,12 +12,14 @@ package prj5;
  * necessary for a list implementation
  * 
  * @author Kean Jaldin Guzman (Keanjg28)
+ * @author Lucas Lombardi (lucaslombardia)
  * @param <E>
  *            object type
  * @version Apr 17, 2024
  */
 public interface LinkedList<E>
 {
+    // This is the INTERFACE for LList
     /**
      * Gets the number of elements in the list
      *
