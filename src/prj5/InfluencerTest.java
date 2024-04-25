@@ -208,6 +208,43 @@ public class InfluencerTest
 
     // ----------------------------------------------------------
     /**
+     * Tests the monthTraditionalEngagementRate method
+     */
+    public void testMonthTraditionalEngagementRate()
+    {
+        assertEquals(inf.monthTraditionalEngagementRate("January"), 26.0, .01);
+
+        Month[] months2 = new Month[] { none, jun, aug, dec, jan, mar, apr, may,
+            nov, sep, oct, jul };
+
+        Influencer inf2 =
+            new Influencer("Sidemen", "sidemen", "England", "IRL", months2);
+
+        assertEquals(inf2.monthTraditionalEngagementRate("N/A"), 0.0, 0.1);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the monthReachEngagementRate method
+     */
+    public void testMonthReachEngagementRate()
+    {
+        assertEquals(inf.monthReachEngagementRate("January"), 40.0, .01);
+
+        Month[] months2 = new Month[] { none, jun, aug, dec, jan, mar, apr, may,
+            nov, sep, oct, jul };
+
+        Influencer inf2 =
+            new Influencer("Sidemen", "sidemen", "England", "IRL", months2);
+
+        assertEquals(inf2.monthReachEngagementRate("N/A"), 0.0, 0.1);
+
+    }
+
+
+    // ----------------------------------------------------------
+    /**
      * Tests the sortMonths method
      */
     public void testSortMonths()
