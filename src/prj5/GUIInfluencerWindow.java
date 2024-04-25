@@ -390,7 +390,8 @@ public class GUIInfluencerWindow
 
     // ----------------------------------------------------------
     /**
-     * Updates the graphs
+     * Updates the graphs based on the various monthStrings, sortMethodStrings,
+     * and engagementTypeStrings
      */
     public void update()
     {
