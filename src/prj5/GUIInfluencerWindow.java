@@ -58,7 +58,7 @@ public class GUIInfluencerWindow
      * Value to calculate bar size; This number will be multiplied by engagement
      * rates; Can be capped if the number goes off screen
      */
-    public static final int BAR_SIZE_MULTIPLIER = 20;
+    public static final int BAR_SIZE_MULTIPLIER = 1;
     public static final int BASE_Y = 400;
 
     // ~ Constructors ..........................................................
@@ -148,7 +148,16 @@ public class GUIInfluencerWindow
             && !engagementTypeString.isEmpty())
         {
             sortData();
-            update();
+            
+            if (sortMethodString.equals("Sorting by Channel Name")) {
+                update("channel");
+            }
+            else if (engagementTypeString.equals("Traditional Engagement Rate")) {
+                update("traditional");
+            }
+            else {
+                update("reach");
+            }
         }
     }
 
@@ -186,6 +195,9 @@ public class GUIInfluencerWindow
             {
                 infData.sort(new CompareMarReachEngagementRate());
             }
+        }
+        else {
+            infData.sort(new CompareByChannelName());
         }
     }
 
@@ -347,16 +359,48 @@ public class GUIInfluencerWindow
     /**
      * Updates the graphs
      */
-    public void update()
+    public void update(String type)
     {
-        int rate1 = (int)infData.get(0).traditionalEngagementRate()
-            * BAR_SIZE_MULTIPLIER;
-        int rate2 = (int)infData.get(1).traditionalEngagementRate()
-            * BAR_SIZE_MULTIPLIER;
-        int rate3 = (int)infData.get(2).traditionalEngagementRate()
-            * BAR_SIZE_MULTIPLIER;
-        int rate4 = (int)infData.get(3).traditionalEngagementRate()
-            * BAR_SIZE_MULTIPLIER;
+        int rate1 = 0;
+        int rate2 = 0;
+        int rate3 = 0;
+        int rate4 = 0;
+        Double bar4FQEngageRate = 0.0;
+        Double bar3FQEngageRate = 0.0;
+        Double bar2FQEngageRate = 0.0;
+        Double bar1FQEngageRate = 0.0;
+        
+        if (type.equals("traditional")) {
+            rate1 = (int)infData.get(0).traditionalEngagementRate()
+                * BAR_SIZE_MULTIPLIER;
+            rate2 = (int)infData.get(1).traditionalEngagementRate()
+                * BAR_SIZE_MULTIPLIER;
+            rate3 = (int)infData.get(2).traditionalEngagementRate()
+                * BAR_SIZE_MULTIPLIER;
+            rate4 = (int)infData.get(3).traditionalEngagementRate()
+                * BAR_SIZE_MULTIPLIER;
+            
+            bar4FQEngageRate = infData.get(3).traditionalEngagementRate();
+            bar3FQEngageRate = infData.get(2).traditionalEngagementRate();
+            bar2FQEngageRate = infData.get(1).traditionalEngagementRate();
+            bar1FQEngageRate = infData.get(0).traditionalEngagementRate();
+        }
+        
+        else if (type.equals("reach") || type.equals("channel")) {
+            rate1 = (int)infData.get(0).reachEngagementRate()
+                * BAR_SIZE_MULTIPLIER;
+            rate2 = (int)infData.get(1).reachEngagementRate()
+                * BAR_SIZE_MULTIPLIER;
+            rate3 = (int)infData.get(2).reachEngagementRate()
+                * BAR_SIZE_MULTIPLIER;
+            rate4 = (int)infData.get(3).reachEngagementRate()
+                * BAR_SIZE_MULTIPLIER;
+            
+            bar4FQEngageRate = infData.get(3).reachEngagementRate();
+            bar3FQEngageRate = infData.get(2).reachEngagementRate();
+            bar2FQEngageRate = infData.get(1).reachEngagementRate();
+            bar1FQEngageRate = infData.get(0).reachEngagementRate();
+        }
 
         DecimalFormat df = new DecimalFormat("#.##");
 
@@ -369,11 +413,6 @@ public class GUIInfluencerWindow
         String bar3Channel = new String(infData.get(2).getChannelName());
         String bar2Channel = new String(infData.get(1).getChannelName());
         String bar1Channel = new String(infData.get(0).getChannelName());
-
-        Double bar4FQEngageRate = infData.get(3).traditionalEngagementRate();
-        Double bar3FQEngageRate = infData.get(2).traditionalEngagementRate();
-        Double bar2FQEngageRate = infData.get(1).traditionalEngagementRate();
-        Double bar1FQEngageRate = infData.get(0).traditionalEngagementRate();
 
         TextShape fourChannelText = new TextShape(
             bar4.getX() - bar4.getWidth(),
