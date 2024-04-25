@@ -148,6 +148,7 @@ public class GUIInfluencerWindow
             && !engagementTypeString.isEmpty())
         {
             sortData();
+
             update();
         }
     }
