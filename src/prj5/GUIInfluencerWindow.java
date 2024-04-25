@@ -172,13 +172,13 @@ public class GUIInfluencerWindow
         if (!sortMethodString.isEmpty() && !monthString.isEmpty()
             && !engagementTypeString.isEmpty())
         {
-            sortData();
 
             bar1.remove();
             bar2.remove();
             bar3.remove();
             bar4.remove();
 
+            sortData();
             update();
         }
     }
@@ -328,10 +328,6 @@ public class GUIInfluencerWindow
 
         sortText.setText(sortMethodString);
 
-        CompareByChannelName comparator = new CompareByChannelName();
-
-        infData.sort(comparator);
-
         checkAndUpdate();
     }
 
@@ -480,7 +476,7 @@ public class GUIInfluencerWindow
                     Double bar4EngageRate =
                         infData.get(3).traditionalEngagementRate();
                     Double bar3EngageRate =
-                        infData.get(1).traditionalEngagementRate();
+                        infData.get(2).traditionalEngagementRate();
                     Double bar2EngageRate =
                         infData.get(1).traditionalEngagementRate();
                     Double bar1EngageRate =
