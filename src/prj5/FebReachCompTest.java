@@ -13,12 +13,11 @@ public class FebReachCompTest
     extends TestCase
 {
 
-    private SinglyLinkedList<String> list;
-    private SinglyLinkedList<String> emptyList;
-    private SinglyLinkedList<Influencer> list2;
+    
+
     private Influencer person;
     private Influencer person2;
-    private Influencer person3;
+   
 
     // ~ Constructors ..........................................................
     /**
@@ -26,13 +25,11 @@ public class FebReachCompTest
      */
     public void setUp()
     {
-        list = new SinglyLinkedList<String>();
+        SinglyLinkedList<String> list = new SinglyLinkedList<String>();
         list.add("apple");
         list.add("banana");
         list.add("mango");
         list.add("kiwi");
-
-        emptyList = new SinglyLinkedList<String>();
 
         Month jan1 = new Month("January", 1000, 100, 512, 100, 10);
         Month feb1 = new Month("February", 2000, 200, 842, 200, 30);
@@ -61,11 +58,11 @@ public class FebReachCompTest
 
         person = new Influencer("a", "football", "US", "Sports", monthArray1);
         person2 = new Influencer("b", "soccer", "US", "Sports", monthArray2);
-        person3 = new Influencer("c", "Baseball", "US", "Sports", monthArray3);
+       
 
-        list2 = new SinglyLinkedList<Influencer>();
+        SinglyLinkedList<Influencer> list2 = new SinglyLinkedList<Influencer>();
         list2.add(person);
-        list2.add(person3);
+        
         list2.add(person2);
 
     }
@@ -76,12 +73,12 @@ public class FebReachCompTest
      */
     public void testCompare()
     {
-        CompareJanTraditionalEngagementRate compJanReach =
-            new CompareJanTraditionalEngagementRate();
+        CompareFebReachEngagementRate compFebReach =
+            new CompareFebReachEngagementRate();
         Influencer inf1 = person;
         Influencer inf2 = person2;
-        Influencer inf3 = person3;
-        int result = compJanReach.compare(inf1, inf2);
+
+        int result = compFebReach.compare(inf1, inf2);
         assertTrue(result > 0);
     }
 }

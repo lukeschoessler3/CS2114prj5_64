@@ -4,18 +4,19 @@ import student.TestCase;
 
 /**
  * // -------------------------------------------------------------------------
- * /** tests class for the march reach engagement comparator
+ * /** tests class for the quarter traditional engagement comparator
  * 
  * @author jacks
  * @version Apr 25, 2024
  */
-public class MarReachCompTest
+public class QuarterTradCompTest
     extends TestCase
 {
 
+    
     private Influencer person;
     private Influencer person2;
-   
+  
 
     // ~ Constructors ..........................................................
     /**
@@ -28,6 +29,8 @@ public class MarReachCompTest
         list.add("banana");
         list.add("mango");
         list.add("kiwi");
+
+        
 
         Month jan1 = new Month("January", 1000, 100, 512, 100, 10);
         Month feb1 = new Month("February", 2000, 200, 842, 200, 30);
@@ -71,12 +74,12 @@ public class MarReachCompTest
      */
     public void testCompare()
     {
-        CompareMarReachEngagementRate compMarReach =
-            new CompareMarReachEngagementRate();
+        CompareQuarterTraditionalEngagementRate compQuarterTrad =
+            new CompareQuarterTraditionalEngagementRate();
         Influencer inf1 = person;
         Influencer inf2 = person2;
-        
-        int result = compMarReach.compare(inf1, inf2);
+       
+        int result = compQuarterTrad.compare(inf1, inf2);
         assertTrue(result < 0);
     }
 }
