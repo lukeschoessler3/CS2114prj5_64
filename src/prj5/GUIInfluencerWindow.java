@@ -7,10 +7,12 @@ import java.text.DecimalFormat;
 
 // -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here. Follow it with additional
- * details about its purpose, what abstraction it represents, and how to use it.
+ * This class allows for the implementation of the Window and interace
+ * in which the user interacts. It uses TextShapes, Buttons, Windows,
+ * and Shape objects to achieve such feat (CS2 package).
  * 
  * @author Luke Schoessler
+ * @author Lucas Lombardi
  * @version Apr 22, 2024
  */
 public class GUIInfluencerWindow
@@ -391,10 +393,15 @@ public class GUIInfluencerWindow
      */
     public void update()
     {
-        int height1;
-        int height2;
-        int height3;
-        int height4;
+        int height1 = 0;
+        int height2 = 0;
+        int height3 = 0;
+        int height4 = 0;
+        
+        String bar4Channel;
+        String bar3Channel;
+        String bar2Channel;
+        String bar1Channel;
 
         if (sortMethodString.equals("Sorting by Channel Name"))
         {
@@ -411,68 +418,6 @@ public class GUIInfluencerWindow
                     height4 = (int)infData.get(3).traditionalEngagementRate()
                         * BAR_SIZE_MULTIPLIER;
 
-                    DecimalFormat df = new DecimalFormat("#.#");
-
-                    if (height1 > 400)
-                    {
-                        height1 = 400;
-                    }
-                    if (height2 > 350)
-                    {
-                        height2 = 350;
-                    }
-                    if (height3 > 300)
-                    {
-                        height3 = 300;
-                    }
-                    if (height4 > 250)
-                    {
-                        height4 = 250;
-                    }
-
-                    bar1.setY(BASE_Y - height1);
-                    bar2.setY(BASE_Y - height2);
-                    bar3.setY(BASE_Y - height3);
-                    bar4.setY(BASE_Y - height4);
-
-                    bar1 = new Shape(
-                        bar1.getX(),
-                        bar1.getY(),
-                        bar1.getWidth(),
-                        height1,
-                        Color.BLUE);
-                    bar2 = new Shape(
-                        bar2.getX(),
-                        bar2.getY(),
-                        bar2.getWidth(),
-                        height2,
-                        Color.RED);
-                    bar3 = new Shape(
-                        bar3.getX(),
-                        bar3.getY(),
-                        bar3.getWidth(),
-                        height3,
-                        Color.GREEN);
-                    bar4 = new Shape(
-                        bar4.getX(),
-                        bar4.getY(),
-                        bar4.getWidth(),
-                        height4,
-                        Color.ORANGE);
-                    window.addShape(bar1);
-                    window.addShape(bar2);
-                    window.addShape(bar3);
-                    window.addShape(bar4);
-
-                    String bar4Channel =
-                        new String(infData.get(3).getChannelName());
-                    String bar3Channel =
-                        new String(infData.get(2).getChannelName());
-                    String bar2Channel =
-                        new String(infData.get(1).getChannelName());
-                    String bar1Channel =
-                        new String(infData.get(0).getChannelName());
-
                     Double bar4EngageRate =
                         infData.get(3).traditionalEngagementRate();
                     Double bar3EngageRate =
@@ -481,25 +426,13 @@ public class GUIInfluencerWindow
                         infData.get(1).traditionalEngagementRate();
                     Double bar1EngageRate =
                         infData.get(0).traditionalEngagementRate();
-
-                    fourChannelText.setText(bar4Channel);
-                    threeChannelText.setText(bar3Channel);
-                    twoChannelText.setText(bar2Channel);
-                    oneChannelText.setText(bar1Channel);
-
+                    
+                    DecimalFormat df = new DecimalFormat("#.#");
+                    
                     fourEngageRate.setText(df.format(bar4EngageRate));
                     threeEngageRate.setText(df.format(bar3EngageRate));
                     twoEngageRate.setText(df.format(bar2EngageRate));
                     oneEngageRate.setText(df.format(bar1EngageRate));
-
-                    window.addShape(fourChannelText);
-                    window.addShape(threeChannelText);
-                    window.addShape(twoChannelText);
-                    window.addShape(oneChannelText);
-                    window.addShape(fourEngageRate);
-                    window.addShape(threeEngageRate);
-                    window.addShape(twoEngageRate);
-                    window.addShape(oneEngageRate);
                 }
 
                 else
@@ -517,68 +450,6 @@ public class GUIInfluencerWindow
                         .monthTraditionalEngagementRate(monthString)
                         * BAR_SIZE_MULTIPLIER;
 
-                    DecimalFormat df = new DecimalFormat("#.#");
-
-                    if (height1 > 400)
-                    {
-                        height1 = 400;
-                    }
-                    if (height2 > 350)
-                    {
-                        height2 = 350;
-                    }
-                    if (height3 > 300)
-                    {
-                        height3 = 300;
-                    }
-                    if (height4 > 250)
-                    {
-                        height4 = 250;
-                    }
-
-                    bar1.setY(BASE_Y - height1);
-                    bar2.setY(BASE_Y - height2);
-                    bar3.setY(BASE_Y - height3);
-                    bar4.setY(BASE_Y - height4);
-
-                    bar1 = new Shape(
-                        bar1.getX(),
-                        bar1.getY(),
-                        bar1.getWidth(),
-                        height1,
-                        Color.BLUE);
-                    bar2 = new Shape(
-                        bar2.getX(),
-                        bar2.getY(),
-                        bar2.getWidth(),
-                        height2,
-                        Color.RED);
-                    bar3 = new Shape(
-                        bar3.getX(),
-                        bar3.getY(),
-                        bar3.getWidth(),
-                        height3,
-                        Color.GREEN);
-                    bar4 = new Shape(
-                        bar4.getX(),
-                        bar4.getY(),
-                        bar4.getWidth(),
-                        height4,
-                        Color.ORANGE);
-                    window.addShape(bar1);
-                    window.addShape(bar2);
-                    window.addShape(bar3);
-                    window.addShape(bar4);
-
-                    String bar4Channel =
-                        new String(infData.get(3).getChannelName());
-                    String bar3Channel =
-                        new String(infData.get(2).getChannelName());
-                    String bar2Channel =
-                        new String(infData.get(1).getChannelName());
-                    String bar1Channel =
-                        new String(infData.get(0).getChannelName());
-
                     Double bar4EngageRate = infData.get(3)
                         .monthTraditionalEngagementRate(monthString);
                     Double bar3EngageRate = infData.get(2)
@@ -587,25 +458,13 @@ public class GUIInfluencerWindow
                         .monthTraditionalEngagementRate(monthString);
                     Double bar1EngageRate = infData.get(0)
                         .monthTraditionalEngagementRate(monthString);
-
-                    fourChannelText.setText(bar4Channel);
-                    threeChannelText.setText(bar3Channel);
-                    twoChannelText.setText(bar2Channel);
-                    oneChannelText.setText(bar1Channel);
+                    
+                    DecimalFormat df = new DecimalFormat("#.#");
 
                     fourEngageRate.setText(df.format(bar4EngageRate));
                     threeEngageRate.setText(df.format(bar3EngageRate));
                     twoEngageRate.setText(df.format(bar2EngageRate));
                     oneEngageRate.setText(df.format(bar1EngageRate));
-
-                    window.addShape(fourChannelText);
-                    window.addShape(threeChannelText);
-                    window.addShape(twoChannelText);
-                    window.addShape(oneChannelText);
-                    window.addShape(fourEngageRate);
-                    window.addShape(threeEngageRate);
-                    window.addShape(twoEngageRate);
-                    window.addShape(oneEngageRate);
                 }
             }
 
@@ -621,69 +480,7 @@ public class GUIInfluencerWindow
                         * BAR_SIZE_MULTIPLIER;
                     height4 = (int)infData.get(3).reachEngagementRate()
                         * BAR_SIZE_MULTIPLIER;
-
-                    DecimalFormat df = new DecimalFormat("#.#");
-
-                    if (height1 > 400)
-                    {
-                        height1 = 400;
-                    }
-                    if (height2 > 350)
-                    {
-                        height2 = 350;
-                    }
-                    if (height3 > 300)
-                    {
-                        height3 = 300;
-                    }
-                    if (height4 > 250)
-                    {
-                        height4 = 250;
-                    }
-
-                    bar1.setY(BASE_Y - height1);
-                    bar2.setY(BASE_Y - height2);
-                    bar3.setY(BASE_Y - height3);
-                    bar4.setY(BASE_Y - height4);
-
-                    bar1 = new Shape(
-                        bar1.getX(),
-                        bar1.getY(),
-                        bar1.getWidth(),
-                        height1,
-                        Color.BLUE);
-                    bar2 = new Shape(
-                        bar2.getX(),
-                        bar2.getY(),
-                        bar2.getWidth(),
-                        height2,
-                        Color.RED);
-                    bar3 = new Shape(
-                        bar3.getX(),
-                        bar3.getY(),
-                        bar3.getWidth(),
-                        height3,
-                        Color.GREEN);
-                    bar4 = new Shape(
-                        bar4.getX(),
-                        bar4.getY(),
-                        bar4.getWidth(),
-                        height4,
-                        Color.ORANGE);
-                    window.addShape(bar1);
-                    window.addShape(bar2);
-                    window.addShape(bar3);
-                    window.addShape(bar4);
-
-                    String bar4Channel =
-                        new String(infData.get(3).getChannelName());
-                    String bar3Channel =
-                        new String(infData.get(2).getChannelName());
-                    String bar2Channel =
-                        new String(infData.get(1).getChannelName());
-                    String bar1Channel =
-                        new String(infData.get(0).getChannelName());
-
+                    
                     Double bar4EngageRate =
                         infData.get(3).reachEngagementRate();
                     Double bar3EngageRate =
@@ -692,25 +489,13 @@ public class GUIInfluencerWindow
                         infData.get(1).reachEngagementRate();
                     Double bar1EngageRate =
                         infData.get(0).reachEngagementRate();
-
-                    fourChannelText.setText(bar4Channel);
-                    threeChannelText.setText(bar3Channel);
-                    twoChannelText.setText(bar2Channel);
-                    oneChannelText.setText(bar1Channel);
+                    
+                    DecimalFormat df = new DecimalFormat("#.#");
 
                     fourEngageRate.setText(df.format(bar4EngageRate));
                     threeEngageRate.setText(df.format(bar3EngageRate));
                     twoEngageRate.setText(df.format(bar2EngageRate));
                     oneEngageRate.setText(df.format(bar1EngageRate));
-
-                    window.addShape(fourChannelText);
-                    window.addShape(threeChannelText);
-                    window.addShape(twoChannelText);
-                    window.addShape(oneChannelText);
-                    window.addShape(fourEngageRate);
-                    window.addShape(threeEngageRate);
-                    window.addShape(twoEngageRate);
-                    window.addShape(oneEngageRate);
                 }
 
                 else
@@ -728,68 +513,6 @@ public class GUIInfluencerWindow
                         .monthReachEngagementRate(monthString)
                         * BAR_SIZE_MULTIPLIER;
 
-                    DecimalFormat df = new DecimalFormat("#.#");
-
-                    if (height1 > 400)
-                    {
-                        height1 = 400;
-                    }
-                    if (height2 > 350)
-                    {
-                        height2 = 350;
-                    }
-                    if (height3 > 300)
-                    {
-                        height3 = 300;
-                    }
-                    if (height4 > 250)
-                    {
-                        height4 = 250;
-                    }
-
-                    bar1.setY(BASE_Y - height1);
-                    bar2.setY(BASE_Y - height2);
-                    bar3.setY(BASE_Y - height3);
-                    bar4.setY(BASE_Y - height4);
-
-                    bar1 = new Shape(
-                        bar1.getX(),
-                        bar1.getY(),
-                        bar1.getWidth(),
-                        height1,
-                        Color.BLUE);
-                    bar2 = new Shape(
-                        bar2.getX(),
-                        bar2.getY(),
-                        bar2.getWidth(),
-                        height2,
-                        Color.RED);
-                    bar3 = new Shape(
-                        bar3.getX(),
-                        bar3.getY(),
-                        bar3.getWidth(),
-                        height3,
-                        Color.GREEN);
-                    bar4 = new Shape(
-                        bar4.getX(),
-                        bar4.getY(),
-                        bar4.getWidth(),
-                        height4,
-                        Color.ORANGE);
-                    window.addShape(bar1);
-                    window.addShape(bar2);
-                    window.addShape(bar3);
-                    window.addShape(bar4);
-
-                    String bar4Channel =
-                        new String(infData.get(3).getChannelName());
-                    String bar3Channel =
-                        new String(infData.get(2).getChannelName());
-                    String bar2Channel =
-                        new String(infData.get(1).getChannelName());
-                    String bar1Channel =
-                        new String(infData.get(0).getChannelName());
-
                     Double bar4EngageRate =
                         infData.get(3).monthReachEngagementRate(monthString);
                     Double bar3EngageRate =
@@ -799,24 +522,12 @@ public class GUIInfluencerWindow
                     Double bar1EngageRate =
                         infData.get(0).monthReachEngagementRate(monthString);
 
-                    fourChannelText.setText(bar4Channel);
-                    threeChannelText.setText(bar3Channel);
-                    twoChannelText.setText(bar2Channel);
-                    oneChannelText.setText(bar1Channel);
+                    DecimalFormat df = new DecimalFormat("#.#");
 
                     fourEngageRate.setText(df.format(bar4EngageRate));
                     threeEngageRate.setText(df.format(bar3EngageRate));
                     twoEngageRate.setText(df.format(bar2EngageRate));
                     oneEngageRate.setText(df.format(bar1EngageRate));
-
-                    window.addShape(fourChannelText);
-                    window.addShape(threeChannelText);
-                    window.addShape(twoChannelText);
-                    window.addShape(oneChannelText);
-                    window.addShape(fourEngageRate);
-                    window.addShape(threeEngageRate);
-                    window.addShape(twoEngageRate);
-                    window.addShape(oneEngageRate);
                 }
             }
 
@@ -836,68 +547,6 @@ public class GUIInfluencerWindow
                     height4 = (int)infData.get(0).traditionalEngagementRate()
                         * BAR_SIZE_MULTIPLIER;
 
-                    DecimalFormat df = new DecimalFormat("#.#");
-
-                    if (height1 > 400)
-                    {
-                        height1 = 400;
-                    }
-                    if (height2 > 350)
-                    {
-                        height2 = 350;
-                    }
-                    if (height3 > 300)
-                    {
-                        height3 = 300;
-                    }
-                    if (height4 > 250)
-                    {
-                        height4 = 250;
-                    }
-
-                    bar1.setY(BASE_Y - height1);
-                    bar2.setY(BASE_Y - height2);
-                    bar3.setY(BASE_Y - height3);
-                    bar4.setY(BASE_Y - height4);
-
-                    bar1 = new Shape(
-                        bar1.getX(),
-                        bar1.getY(),
-                        bar1.getWidth(),
-                        height1,
-                        Color.BLUE);
-                    bar2 = new Shape(
-                        bar2.getX(),
-                        bar2.getY(),
-                        bar2.getWidth(),
-                        height2,
-                        Color.RED);
-                    bar3 = new Shape(
-                        bar3.getX(),
-                        bar3.getY(),
-                        bar3.getWidth(),
-                        height3,
-                        Color.GREEN);
-                    bar4 = new Shape(
-                        bar4.getX(),
-                        bar4.getY(),
-                        bar4.getWidth(),
-                        height4,
-                        Color.ORANGE);
-                    window.addShape(bar1);
-                    window.addShape(bar2);
-                    window.addShape(bar3);
-                    window.addShape(bar4);
-
-                    String bar4Channel =
-                        new String(infData.get(0).getChannelName());
-                    String bar3Channel =
-                        new String(infData.get(1).getChannelName());
-                    String bar2Channel =
-                        new String(infData.get(2).getChannelName());
-                    String bar1Channel =
-                        new String(infData.get(3).getChannelName());
-
                     Double bar4EngageRate =
                         infData.get(0).traditionalEngagementRate();
                     Double bar3EngageRate =
@@ -906,25 +555,13 @@ public class GUIInfluencerWindow
                         infData.get(2).traditionalEngagementRate();
                     Double bar1EngageRate =
                         infData.get(3).traditionalEngagementRate();
-
-                    fourChannelText.setText(bar4Channel);
-                    threeChannelText.setText(bar3Channel);
-                    twoChannelText.setText(bar2Channel);
-                    oneChannelText.setText(bar1Channel);
+                    
+                    DecimalFormat df = new DecimalFormat("#.#");
 
                     fourEngageRate.setText(df.format(bar4EngageRate));
                     threeEngageRate.setText(df.format(bar3EngageRate));
                     twoEngageRate.setText(df.format(bar2EngageRate));
                     oneEngageRate.setText(df.format(bar1EngageRate));
-
-                    window.addShape(fourChannelText);
-                    window.addShape(threeChannelText);
-                    window.addShape(twoChannelText);
-                    window.addShape(oneChannelText);
-                    window.addShape(fourEngageRate);
-                    window.addShape(threeEngageRate);
-                    window.addShape(twoEngageRate);
-                    window.addShape(oneEngageRate);
                 }
 
                 else
@@ -941,69 +578,7 @@ public class GUIInfluencerWindow
                     height4 = (int)infData.get(0)
                         .monthTraditionalEngagementRate(monthString)
                         * BAR_SIZE_MULTIPLIER;
-
-                    DecimalFormat df = new DecimalFormat("#.#");
-
-                    if (height1 > 400)
-                    {
-                        height1 = 400;
-                    }
-                    if (height2 > 350)
-                    {
-                        height2 = 350;
-                    }
-                    if (height3 > 300)
-                    {
-                        height3 = 300;
-                    }
-                    if (height4 > 250)
-                    {
-                        height4 = 250;
-                    }
-
-                    bar1.setY(BASE_Y - height1);
-                    bar2.setY(BASE_Y - height2);
-                    bar3.setY(BASE_Y - height3);
-                    bar4.setY(BASE_Y - height4);
-
-                    bar1 = new Shape(
-                        bar1.getX(),
-                        bar1.getY(),
-                        bar1.getWidth(),
-                        height1,
-                        Color.BLUE);
-                    bar2 = new Shape(
-                        bar2.getX(),
-                        bar2.getY(),
-                        bar2.getWidth(),
-                        height2,
-                        Color.RED);
-                    bar3 = new Shape(
-                        bar3.getX(),
-                        bar3.getY(),
-                        bar3.getWidth(),
-                        height3,
-                        Color.GREEN);
-                    bar4 = new Shape(
-                        bar4.getX(),
-                        bar4.getY(),
-                        bar4.getWidth(),
-                        height4,
-                        Color.ORANGE);
-                    window.addShape(bar1);
-                    window.addShape(bar2);
-                    window.addShape(bar3);
-                    window.addShape(bar4);
-
-                    String bar4Channel =
-                        new String(infData.get(0).getChannelName());
-                    String bar3Channel =
-                        new String(infData.get(1).getChannelName());
-                    String bar2Channel =
-                        new String(infData.get(2).getChannelName());
-                    String bar1Channel =
-                        new String(infData.get(3).getChannelName());
-
+                    
                     Double bar4EngageRate = infData.get(0)
                         .monthTraditionalEngagementRate(monthString);
                     Double bar3EngageRate = infData.get(1)
@@ -1013,24 +588,12 @@ public class GUIInfluencerWindow
                     Double bar1EngageRate = infData.get(3)
                         .monthTraditionalEngagementRate(monthString);
 
-                    fourChannelText.setText(bar4Channel);
-                    threeChannelText.setText(bar3Channel);
-                    twoChannelText.setText(bar2Channel);
-                    oneChannelText.setText(bar1Channel);
+                    DecimalFormat df = new DecimalFormat("#.#");
 
                     fourEngageRate.setText(df.format(bar4EngageRate));
                     threeEngageRate.setText(df.format(bar3EngageRate));
                     twoEngageRate.setText(df.format(bar2EngageRate));
                     oneEngageRate.setText(df.format(bar1EngageRate));
-
-                    window.addShape(fourChannelText);
-                    window.addShape(threeChannelText);
-                    window.addShape(twoChannelText);
-                    window.addShape(oneChannelText);
-                    window.addShape(fourEngageRate);
-                    window.addShape(threeEngageRate);
-                    window.addShape(twoEngageRate);
-                    window.addShape(oneEngageRate);
                 }
             }
 
@@ -1046,69 +609,7 @@ public class GUIInfluencerWindow
                         * BAR_SIZE_MULTIPLIER;
                     height4 = (int)infData.get(0).reachEngagementRate()
                         * BAR_SIZE_MULTIPLIER;
-
-                    DecimalFormat df = new DecimalFormat("#.#");
-
-                    if (height1 > 400)
-                    {
-                        height1 = 400;
-                    }
-                    if (height2 > 350)
-                    {
-                        height2 = 350;
-                    }
-                    if (height3 > 300)
-                    {
-                        height3 = 300;
-                    }
-                    if (height4 > 250)
-                    {
-                        height4 = 250;
-                    }
-
-                    bar1.setY(BASE_Y - height1);
-                    bar2.setY(BASE_Y - height2);
-                    bar3.setY(BASE_Y - height3);
-                    bar4.setY(BASE_Y - height4);
-
-                    bar1 = new Shape(
-                        bar1.getX(),
-                        bar1.getY(),
-                        bar1.getWidth(),
-                        height1,
-                        Color.BLUE);
-                    bar2 = new Shape(
-                        bar2.getX(),
-                        bar2.getY(),
-                        bar2.getWidth(),
-                        height2,
-                        Color.RED);
-                    bar3 = new Shape(
-                        bar3.getX(),
-                        bar3.getY(),
-                        bar3.getWidth(),
-                        height3,
-                        Color.GREEN);
-                    bar4 = new Shape(
-                        bar4.getX(),
-                        bar4.getY(),
-                        bar4.getWidth(),
-                        height4,
-                        Color.ORANGE);
-                    window.addShape(bar1);
-                    window.addShape(bar2);
-                    window.addShape(bar3);
-                    window.addShape(bar4);
-
-                    String bar4Channel =
-                        new String(infData.get(0).getChannelName());
-                    String bar3Channel =
-                        new String(infData.get(1).getChannelName());
-                    String bar2Channel =
-                        new String(infData.get(2).getChannelName());
-                    String bar1Channel =
-                        new String(infData.get(3).getChannelName());
-
+                    
                     Double bar4EngageRate =
                         infData.get(0).reachEngagementRate();
                     Double bar3EngageRate =
@@ -1117,25 +618,13 @@ public class GUIInfluencerWindow
                         infData.get(2).reachEngagementRate();
                     Double bar1EngageRate =
                         infData.get(3).reachEngagementRate();
-
-                    fourChannelText.setText(bar4Channel);
-                    threeChannelText.setText(bar3Channel);
-                    twoChannelText.setText(bar2Channel);
-                    oneChannelText.setText(bar1Channel);
+                    
+                    DecimalFormat df = new DecimalFormat("#.#");
 
                     fourEngageRate.setText(df.format(bar4EngageRate));
                     threeEngageRate.setText(df.format(bar3EngageRate));
                     twoEngageRate.setText(df.format(bar2EngageRate));
                     oneEngageRate.setText(df.format(bar1EngageRate));
-
-                    window.addShape(fourChannelText);
-                    window.addShape(threeChannelText);
-                    window.addShape(twoChannelText);
-                    window.addShape(oneChannelText);
-                    window.addShape(fourEngageRate);
-                    window.addShape(threeEngageRate);
-                    window.addShape(twoEngageRate);
-                    window.addShape(oneEngageRate);
                 }
 
                 else
@@ -1153,68 +642,7 @@ public class GUIInfluencerWindow
                         .monthReachEngagementRate(monthString)
                         * BAR_SIZE_MULTIPLIER;
 
-                    DecimalFormat df = new DecimalFormat("#.#");
-
-                    if (height1 > 400)
-                    {
-                        height1 = 400;
-                    }
-                    if (height2 > 350)
-                    {
-                        height2 = 350;
-                    }
-                    if (height3 > 300)
-                    {
-                        height3 = 300;
-                    }
-                    if (height4 > 250)
-                    {
-                        height4 = 250;
-                    }
-
-                    bar1.setY(BASE_Y - height1);
-                    bar2.setY(BASE_Y - height2);
-                    bar3.setY(BASE_Y - height3);
-                    bar4.setY(BASE_Y - height4);
-
-                    bar1 = new Shape(
-                        bar1.getX(),
-                        bar1.getY(),
-                        bar1.getWidth(),
-                        height1,
-                        Color.BLUE);
-                    bar2 = new Shape(
-                        bar2.getX(),
-                        bar2.getY(),
-                        bar2.getWidth(),
-                        height2,
-                        Color.RED);
-                    bar3 = new Shape(
-                        bar3.getX(),
-                        bar3.getY(),
-                        bar3.getWidth(),
-                        height3,
-                        Color.GREEN);
-                    bar4 = new Shape(
-                        bar4.getX(),
-                        bar4.getY(),
-                        bar4.getWidth(),
-                        height4,
-                        Color.ORANGE);
-                    window.addShape(bar1);
-                    window.addShape(bar2);
-                    window.addShape(bar3);
-                    window.addShape(bar4);
-
-                    String bar4Channel =
-                        new String(infData.get(0).getChannelName());
-                    String bar3Channel =
-                        new String(infData.get(1).getChannelName());
-                    String bar2Channel =
-                        new String(infData.get(2).getChannelName());
-                    String bar1Channel =
-                        new String(infData.get(3).getChannelName());
-
+                    
                     Double bar4EngageRate =
                         infData.get(0).monthReachEngagementRate(monthString);
                     Double bar3EngageRate =
@@ -1224,26 +652,85 @@ public class GUIInfluencerWindow
                     Double bar1EngageRate =
                         infData.get(3).monthReachEngagementRate(monthString);
 
-                    fourChannelText.setText(bar4Channel);
-                    threeChannelText.setText(bar3Channel);
-                    twoChannelText.setText(bar2Channel);
-                    oneChannelText.setText(bar1Channel);
+                    DecimalFormat df = new DecimalFormat("#.#");
 
                     fourEngageRate.setText(df.format(bar4EngageRate));
                     threeEngageRate.setText(df.format(bar3EngageRate));
                     twoEngageRate.setText(df.format(bar2EngageRate));
                     oneEngageRate.setText(df.format(bar1EngageRate));
-
-                    window.addShape(fourChannelText);
-                    window.addShape(threeChannelText);
-                    window.addShape(twoChannelText);
-                    window.addShape(oneChannelText);
-                    window.addShape(fourEngageRate);
-                    window.addShape(threeEngageRate);
-                    window.addShape(twoEngageRate);
-                    window.addShape(oneEngageRate);
                 }
             }
         }
+
+        if (height1 > 400)
+        {
+            height1 = 400;
+        }
+        if (height2 > 350)
+        {
+            height2 = 350;
+        }
+        if (height3 > 300)
+        {
+            height3 = 300;
+        }
+        if (height4 > 250)
+        {
+            height4 = 250;
+        }
+
+        bar1.setY(BASE_Y - height1);
+        bar2.setY(BASE_Y - height2);
+        bar3.setY(BASE_Y - height3);
+        bar4.setY(BASE_Y - height4);
+
+        bar1 = new Shape(
+            bar1.getX(),
+            bar1.getY(),
+            bar1.getWidth(),
+            height1,
+            Color.BLUE);
+        bar2 = new Shape(
+            bar2.getX(),
+            bar2.getY(),
+            bar2.getWidth(),
+            height2,
+            Color.RED);
+        bar3 = new Shape(
+            bar3.getX(),
+            bar3.getY(),
+            bar3.getWidth(),
+            height3,
+            Color.GREEN);
+        bar4 = new Shape(
+            bar4.getX(),
+            bar4.getY(),
+            bar4.getWidth(),
+            height4,
+            Color.ORANGE);
+        window.addShape(bar1);
+        window.addShape(bar2);
+        window.addShape(bar3);
+        window.addShape(bar4);
+        
+        bar4Channel = (infData.get(3).getChannelName());
+        bar3Channel = (infData.get(2).getChannelName());
+        bar2Channel = (infData.get(1).getChannelName());
+        bar1Channel = (infData.get(0).getChannelName());
+        
+
+        fourChannelText.setText(bar4Channel);
+        threeChannelText.setText(bar3Channel);
+        twoChannelText.setText(bar2Channel);
+        oneChannelText.setText(bar1Channel);
+
+        window.addShape(fourChannelText);
+        window.addShape(threeChannelText);
+        window.addShape(twoChannelText);
+        window.addShape(oneChannelText);
+        window.addShape(fourEngageRate);
+        window.addShape(threeEngageRate);
+        window.addShape(twoEngageRate);
+        window.addShape(oneEngageRate);  
     }
 }
