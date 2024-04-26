@@ -1,3 +1,12 @@
+//Virginia Tech Honor Code Pledge:
+//
+//Project 3
+//As a Hokie, I will conduct myself with honor and integrity at all times.
+//I will not lie, cheat, or steal, nor will I
+//accept the actions of those who do.
+//-- Luke Schoessler (lukeschoessler3)
+// -------------------------------------------------------------------------
+
 package prj5;
 
 import java.util.Comparator;
