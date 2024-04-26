@@ -158,7 +158,7 @@ public class GUIInfluencerWindow
         march.onClick(this, "clickedMar");
         window.addButton(march, WindowSide.SOUTH);
 
-        firstQuarter = new Button("First Quarter (Jan - March)");
+        firstQuarter = new Button("First Quarter (Jan-March)");
         firstQuarter.onClick(this, "clickedQ1");
         window.addButton(firstQuarter, WindowSide.SOUTH);
 
