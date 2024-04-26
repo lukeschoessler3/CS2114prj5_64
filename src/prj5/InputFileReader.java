@@ -10,7 +10,7 @@ import student.IOHelper;
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
 // -- Luke Schoessler (lukeschoessler3)
-// -- Jacks Bauer
+// -- Jackson Bauer (jacksonbauer)
 
 /**
  * // -------------------------------------------------------------------------
@@ -100,7 +100,7 @@ public class InputFileReader
                 {
                     scanner.nextLine();
                 }
-                
+
                 // Obtain all the token values of the given
                 // single-line from the input file
                 monthName = values[0];
@@ -264,7 +264,7 @@ public class InputFileReader
             infData.sort(compare);
             printTraditionalEngagement();
         }
-        
+
         // If we are sorting by Reach Engagement Aspect,
         // use the respected comparators
         else if (type.equals(REACH))

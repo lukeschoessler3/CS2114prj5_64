@@ -224,7 +224,7 @@ public class Month
          */
         public int compare(Month month, Month otherMonth)
         {
-            
+
             // Just return a large value that will provide the
             // comparator with the respected return value
             if (month == null || otherMonth == null)

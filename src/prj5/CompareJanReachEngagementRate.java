@@ -5,7 +5,6 @@
 // do.
 // -- Luke Schoessler (lukeschoessler3)
 
-
 package prj5;
 
 import java.util.Comparator;

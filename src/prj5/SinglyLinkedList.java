@@ -460,9 +460,9 @@ public class SinglyLinkedList<E>
 
     // ----------------------------------------------------------
     /**
-     * Sorts based on the comparator. Uses wildcard to allow for
-     * all types of comparators to be used. This allows for the 
-     * LList to be sorted based off different parameters.
+     * Sorts based on the comparator. Uses wildcard to allow for all types of
+     * comparators to be used. This allows for the LList to be sorted based off
+     * different parameters.
      * 
      * @param c
      *            the comparator

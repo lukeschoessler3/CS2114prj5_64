@@ -3,7 +3,7 @@
 // As a Hokie, I will conduct myself with honor and integrity at all times.
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
-// -- Jacks
+// -- Jackson Bauer (jacksonbauer)
 
 package prj5;
 
@@ -20,11 +20,8 @@ public class FebReachCompTest
     extends TestCase
 {
 
-    
-
     private Influencer person;
     private Influencer person2;
-   
 
     // ~ Constructors ..........................................................
     /**
@@ -65,11 +62,10 @@ public class FebReachCompTest
 
         person = new Influencer("a", "football", "US", "Sports", monthArray1);
         person2 = new Influencer("b", "soccer", "US", "Sports", monthArray2);
-       
 
         SinglyLinkedList<Influencer> list2 = new SinglyLinkedList<Influencer>();
         list2.add(person);
-        
+
         list2.add(person2);
 
     }

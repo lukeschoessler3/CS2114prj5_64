@@ -154,7 +154,7 @@ public class Influencer
             {
                 i += 0;
             }
-            
+
             // Month equals
             else if (monthArray[i].getMonthName().equals(nameOfMonth))
             {
@@ -256,7 +256,7 @@ public class Influencer
         double sumLikes = month.getLikes();
         double sumFollowers = month.getFollowers();
         double engagementRate = 0;
-        
+
         // Traditional Engagement Rate Formula
         engagementRate = ((sumComments + sumLikes) / sumFollowers) * 100;
         return engagementRate;
