@@ -7,9 +7,9 @@ import java.text.DecimalFormat;
 
 // -------------------------------------------------------------------------
 /**
- * This class allows for the implementation of the Window and interace
- * in which the user interacts. It uses TextShapes, Buttons, Windows,
- * and Shape objects to achieve such feat (CS2 package).
+ * This class allows for the implementation of the Window and interace in which
+ * the user interacts. It uses TextShapes, Buttons, Windows, and Shape objects
+ * to achieve such feat (CS2 package).
  * 
  * @author Luke Schoessler
  * @author Lucas Lombardi
@@ -203,7 +203,7 @@ public class GUIInfluencerWindow
             {
                 infData.sort(new CompareMarTraditionalEngagementRate());
             }
-            else if (monthString.equals("First Quarter (Jan-Mar)"))
+            else if (monthString.equals("First Quarter (Jan-March)"))
             {
                 infData.sort(new CompareQuarterTraditionalEngagementRate());
             }
@@ -223,7 +223,7 @@ public class GUIInfluencerWindow
             {
                 infData.sort(new CompareMarReachEngagementRate());
             }
-            else if (monthString.equals("First Quarter (Jan-Mar)"))
+            else if (monthString.equals("First Quarter (Jan-March)"))
             {
                 infData.sort(new CompareQuarterReachEngagementRate());
             }
@@ -397,7 +397,7 @@ public class GUIInfluencerWindow
         int height2 = 0;
         int height3 = 0;
         int height4 = 0;
-        
+
         String bar4Channel;
         String bar3Channel;
         String bar2Channel;
@@ -426,9 +426,9 @@ public class GUIInfluencerWindow
                         infData.get(1).traditionalEngagementRate();
                     Double bar1EngageRate =
                         infData.get(0).traditionalEngagementRate();
-                    
+
                     DecimalFormat df = new DecimalFormat("#.#");
-                    
+
                     fourEngageRate.setText(df.format(bar4EngageRate));
                     threeEngageRate.setText(df.format(bar3EngageRate));
                     twoEngageRate.setText(df.format(bar2EngageRate));
@@ -458,7 +458,7 @@ public class GUIInfluencerWindow
                         .monthTraditionalEngagementRate(monthString);
                     Double bar1EngageRate = infData.get(0)
                         .monthTraditionalEngagementRate(monthString);
-                    
+
                     DecimalFormat df = new DecimalFormat("#.#");
 
                     fourEngageRate.setText(df.format(bar4EngageRate));
@@ -480,7 +480,7 @@ public class GUIInfluencerWindow
                         * BAR_SIZE_MULTIPLIER;
                     height4 = (int)infData.get(3).reachEngagementRate()
                         * BAR_SIZE_MULTIPLIER;
-                    
+
                     Double bar4EngageRate =
                         infData.get(3).reachEngagementRate();
                     Double bar3EngageRate =
@@ -489,7 +489,7 @@ public class GUIInfluencerWindow
                         infData.get(1).reachEngagementRate();
                     Double bar1EngageRate =
                         infData.get(0).reachEngagementRate();
-                    
+
                     DecimalFormat df = new DecimalFormat("#.#");
 
                     fourEngageRate.setText(df.format(bar4EngageRate));
@@ -555,7 +555,7 @@ public class GUIInfluencerWindow
                         infData.get(2).traditionalEngagementRate();
                     Double bar1EngageRate =
                         infData.get(3).traditionalEngagementRate();
-                    
+
                     DecimalFormat df = new DecimalFormat("#.#");
 
                     fourEngageRate.setText(df.format(bar4EngageRate));
@@ -578,7 +578,7 @@ public class GUIInfluencerWindow
                     height4 = (int)infData.get(0)
                         .monthTraditionalEngagementRate(monthString)
                         * BAR_SIZE_MULTIPLIER;
-                    
+
                     Double bar4EngageRate = infData.get(0)
                         .monthTraditionalEngagementRate(monthString);
                     Double bar3EngageRate = infData.get(1)
@@ -609,7 +609,7 @@ public class GUIInfluencerWindow
                         * BAR_SIZE_MULTIPLIER;
                     height4 = (int)infData.get(0).reachEngagementRate()
                         * BAR_SIZE_MULTIPLIER;
-                    
+
                     Double bar4EngageRate =
                         infData.get(0).reachEngagementRate();
                     Double bar3EngageRate =
@@ -618,7 +618,7 @@ public class GUIInfluencerWindow
                         infData.get(2).reachEngagementRate();
                     Double bar1EngageRate =
                         infData.get(3).reachEngagementRate();
-                    
+
                     DecimalFormat df = new DecimalFormat("#.#");
 
                     fourEngageRate.setText(df.format(bar4EngageRate));
@@ -642,7 +642,6 @@ public class GUIInfluencerWindow
                         .monthReachEngagementRate(monthString)
                         * BAR_SIZE_MULTIPLIER;
 
-                    
                     Double bar4EngageRate =
                         infData.get(0).monthReachEngagementRate(monthString);
                     Double bar3EngageRate =
@@ -712,12 +711,11 @@ public class GUIInfluencerWindow
         window.addShape(bar2);
         window.addShape(bar3);
         window.addShape(bar4);
-        
+
         bar4Channel = (infData.get(3).getChannelName());
         bar3Channel = (infData.get(2).getChannelName());
         bar2Channel = (infData.get(1).getChannelName());
         bar1Channel = (infData.get(0).getChannelName());
-        
 
         fourChannelText.setText(bar4Channel);
         threeChannelText.setText(bar3Channel);
@@ -731,6 +729,6 @@ public class GUIInfluencerWindow
         window.addShape(fourEngageRate);
         window.addShape(threeEngageRate);
         window.addShape(twoEngageRate);
-        window.addShape(oneEngageRate);  
+        window.addShape(oneEngageRate);
     }
 }
