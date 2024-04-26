@@ -38,6 +38,7 @@ public class ProjectRunner
         String fileName;
         SinglyLinkedList<Influencer> infData;
 
+        // Check for inputs, if not use the default file
         if (args.length > 0)
         {
             filer = new InputFileReader(args[0]);
@@ -53,6 +54,7 @@ public class ProjectRunner
         boolean showConsole = false;
         boolean showGUI = true;
 
+        // Display the GUI correctly
         if (showConsole)
         {
             filer.printDataToConsole("traditional");

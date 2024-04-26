@@ -1,3 +1,10 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Jackson Bauer (xx)
+
 package prj5;
 
 import student.TestCase;
@@ -6,7 +13,7 @@ import student.TestCase;
  * // -------------------------------------------------------------------------
  * /** tests class for the march traditional engagement comparator
  * 
- * @author jacks
+ * @author Jackson Bauer
  * @version Apr 25, 2024
  */
 public class MarTradCompTest
